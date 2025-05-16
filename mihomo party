@@ -74,7 +74,7 @@ proxy-groups:
       - 🇺🇲 美国节点
       - 🇰🇷 韩国节点
       - 🚀 手动切换
-  - name: TikTok
+  - name:🎥 TikTok
     type: select
     proxies:
       - 🚀 节点选择
@@ -524,7 +524,7 @@ rules:
   - "RULE-SET,BilibiliHMT,📺 哔哩哔哩"
   - "RULE-SET,Bilibili,📺 哔哩哔哩"
   - "RULE-SET,ChinaMedia,🌏 国内媒体"
-  - "RULE-SET,TikTok,TikTok"
+  - "RULE-SET,TikTok,🎥 TikTok"
   - "RULE-SET,HT,🚀 特殊使用"
   - "RULE-SET,ProxyMedia,🌍 国外媒体"
   - "RULE-SET,ProxyGFWlist,🚀 节点选择"
