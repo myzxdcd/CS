@@ -485,7 +485,7 @@ rule-providers:
     format: text
     type: http
   TikTok:
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/TikTok.list
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list
     path: ./Ruleset/TikTok.list
     behavior: classical
     interval: 86400
@@ -493,7 +493,7 @@ rule-providers:
     type: http
   HT:
     url: https://raw.githubusercontent.com/myzxdcd/Wake-up-from-dream-as-before/refs/heads/main/HT
-    path: .heads/main/HT
+    path: ./Ruleset/HT
     behavior: classical
     interval: 86400
     format: text
