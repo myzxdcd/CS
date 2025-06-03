@@ -408,7 +408,7 @@ rule-providers:
     format: text
     type: http
   YouTube:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/YouTube.list
+    url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/YouTube.yaml
     path: ./ruleset/YouTube.list
     behavior: classical
     interval: 86400
