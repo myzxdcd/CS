@@ -192,5 +192,4 @@ rules:
   - "RULE-SET,Netflix,🎥 奈飞视频"
   - "RULE-SET,TikTok,📹 TikTok"
   - "RULE-SET,HT,🚀 特殊使用"
-  - "RULE-SET,ProxyGFWlist,🚀 节点选择"
   - "MATCH,🐟 漏网之鱼"
