@@ -191,6 +191,13 @@ rule-providers:
     interval: 86400
     format: text
     type: http 
+  GoogleCN:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/GoogleCN.list
+    path: ./ruleset/GoogleCN.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
 rules:
   - "RULE-SET,Telegram,📲 电报消息"
   - "RULE-SET,OpenAi,💬 OpenAi"
@@ -198,5 +205,6 @@ rules:
   - "RULE-SET,Netflix,🎥 奈飞视频"
   - "RULE-SET,TikTok,📹 TikTok"
   - "RULE-SET,HT,🚀 特殊使用"
-  - "MATCH,🐟 漏网之鱼"
   - "GEOIP,CN,🎯 全球直连"
+  - "MATCH,🐟 漏网之鱼"
+  
