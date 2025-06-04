@@ -152,7 +152,7 @@ rule-providers:
     format: text
     type: http
   YouTube:
-    url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/YouTube.yaml
+    url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/YouTube.yaml
     path: ./ruleset/YouTube.yaml
     behavior: classical
     interval: 86400
@@ -173,7 +173,7 @@ rule-providers:
     format: text
     type: http
   HT:
-    url: https://raw.githubusercontent.com/myzxdcd/Wake-up-from-dream-as-before/refs/heads/main/HT
+    url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/HT
     path: ./Ruleset/HT
     behavior: classical
     interval: 86400
