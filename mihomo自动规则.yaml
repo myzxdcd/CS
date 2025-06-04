@@ -238,6 +238,12 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
+  - name: 🇨🇳 台湾节点
+    include-all: true
+    filter: (?i)台|新北|彰化|TW|Taiwan
+    type: url-test
+    interval: 300
+    tolerance: 50
   - name: 🇯🇵 日本节点
     include-all: true
     filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
@@ -247,12 +253,6 @@ proxy-groups:
   - name: 🇺🇲 美国节点
     include-all: true
     filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
-    type: url-test
-    interval: 300
-    tolerance: 50
-  - name: 🇨🇳 台湾节点
-    include-all: true
-    filter: (?i)台|新北|彰化|TW|Taiwan
     type: url-test
     interval: 300
     tolerance: 50
