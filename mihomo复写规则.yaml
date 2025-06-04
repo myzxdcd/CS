@@ -270,7 +270,7 @@ proxy-groups:
     tolerance: 50
   - name: 🎥 奈飞节点
     include-all: true
-    filter: (?i)NF|奈飞|解锁|Netflix|NETFLIX|Media
+    filter: (?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体
     type: select
 
 rule-providers:
