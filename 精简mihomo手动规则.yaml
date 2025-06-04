@@ -111,6 +111,10 @@ proxy-groups:
     include-all: true
     filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
     type: select
+  - name: 🇨🇳 台湾节点
+    include-all: true
+    type: select
+    filter: (?i)台|新北|彰化|TW|Taiwan
   - name: 🇯🇵 日本节点
     include-all: true
     filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
@@ -118,10 +122,6 @@ proxy-groups:
   - name: 🇺🇲 美国节点
     include-all: true
     filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
-    type: select
-  - name: 🇨🇳 台湾节点
-    include-all: true
-    filter: (?i)台|新北|彰化|TW|Taiwan
     type: select
   - name: 🇸🇬 新加坡节点
     include-all: true
@@ -133,7 +133,7 @@ proxy-groups:
     type: select
   - name: 🎥 奈飞节点
     include-all: true
-    filter: (?i)NF|奈飞|解锁|Netflix|NETFLIX|Media
+    filter: (?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体
     type: select
 
 rule-providers:
