@@ -101,6 +101,12 @@ proxy-groups:
       - 🇰🇷 韩国节点
       - 🚀 手动切换
       - DIRECT
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - ♻️ 自动选择
   - name: 🇭🇰 香港节点
     include-all: true
     filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
@@ -193,3 +199,4 @@ rules:
   - "RULE-SET,TikTok,📹 TikTok"
   - "RULE-SET,HT,🚀 特殊使用"
   - "MATCH,🐟 漏网之鱼"
+  - "GEOIP,CN,🎯 全球直连"
