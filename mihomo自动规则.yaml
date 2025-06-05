@@ -3,14 +3,14 @@ proxy-groups:
   - name: 节点选择
     type: select
     proxies:
-      - 自动选择
-      - 香港智选
-      - 台湾智选
-      - 新加坡智选
-      - 日本智选
-      - 美国智选
-      - 韩国智选
-      - 手动切换
+      -自动选择
+      -香港智选
+      -台湾智选
+      -新加坡智选
+      -日本智选
+      -美国智选
+      -韩国智选
+      -手动切换
       - DIRECT
     icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
   - name: 手动切换
@@ -39,7 +39,7 @@ proxy-groups:
       -美国智选
       -韩国智选
       -手动切换
-      - DIRECT
+      -DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
   - name:  OpenAi
     type: select
@@ -53,7 +53,7 @@ proxy-groups:
       -美国智选
       -韩国智选
       -手动切换
-      - DIRECT
+      -DIRECT
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
   - name: 油管视频
     type: select
@@ -67,7 +67,7 @@ proxy-groups:
       -美国智选
       -韩国智选
       -手动切换
-      - DIRECT
+      -DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
   - name: TikTok
     type: select
@@ -81,14 +81,14 @@ proxy-groups:
       -美国智选
       -韩国智选
       -手动切换
-      - DIRECT
+      -DIRECT
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
   - name: 奈飞视频
     type: select
     proxies:
       -节点选择
       -自动选择
-      - 🎥 奈飞节点
+      -奈飞节点
       -新加坡智选
       -香港智选
       -台湾智选
@@ -96,7 +96,7 @@ proxy-groups:
       -美国智选
       -韩国智选
       -手动切换
-      - DIRECT
+      -DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
   - name: 巴哈姆特
     type: select
@@ -104,12 +104,12 @@ proxy-groups:
       -台湾智选
       -节点选择
       -手动切换
-      - DIRECT
+      -DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bahamut.png
   - name: 哔哩哔哩
     type: select
     proxies:
-      - 🎯 全球直连
+      -全球直连
       -台湾智选
       -香港智选
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/bilibili_3.png
@@ -125,7 +125,7 @@ proxy-groups:
       -美国智选
       -韩国智选
       -手动切换
-      - DIRECT
+      -DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
   - name: 国内媒体
     type: select
@@ -140,7 +140,7 @@ proxy-groups:
   - name: 谷歌FCM
     type: select
     proxies:
-      - DIRECT
+      -DIRECT
       -节点选择
       -美国智选
       -香港智选
@@ -153,7 +153,7 @@ proxy-groups:
   - name: 微软Bing
     type: select
     proxies:
-      - DIRECT
+      -DIRECT
       -节点选择
       -美国智选
       -香港智选
@@ -166,7 +166,7 @@ proxy-groups:
   - name: 微软云盘
     type: select
     proxies:
-      - DIRECT
+      -DIRECT
       -节点选择
       -美国智选
       -香港智选
@@ -180,7 +180,7 @@ proxy-groups:
     type: select
     proxies:
       -节点选择
-      - DIRECT
+      -DIRECT
       -美国智选
       -香港智选
       -台湾智选
@@ -192,7 +192,7 @@ proxy-groups:
   - name: 苹果服务
     type: select
     proxies:
-      - DIRECT
+      -DIRECT
       -节点选择
       -美国智选
       -香港智选
@@ -205,7 +205,7 @@ proxy-groups:
   - name: 游戏平台
     type: select
     proxies:
-      - DIRECT
+      -DIRECT
       -节点选择
       -美国智选
       -香港智选
