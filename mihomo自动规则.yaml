@@ -1,3 +1,4 @@
+# 策略组
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -272,7 +273,7 @@ proxy-groups:
     include-all: true
     filter: (?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体
     type: select
-
+# 远程规则
 rule-providers:
   LocalAreaNetwork:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list
@@ -498,6 +499,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http 
+# 规则集域名规则
 rules:
   - "RULE-SET,LocalAreaNetwork,🎯 全球直连"
   - "RULE-SET,UnBan,🎯 全球直连"
