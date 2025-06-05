@@ -69,20 +69,6 @@ proxy-groups:
       - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
-  - name: 漏网之鱼
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - DIRECT
-      - 香港节点
-      - 台湾节点
-      - 新加坡节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-    icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
   - name: TikTok
     type: select
     proxies:
@@ -156,6 +142,20 @@ proxy-groups:
       - 节点选择
       - 自动选择
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+  - name: 漏网之鱼
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - DIRECT
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
+    icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
   - name: 香港节点
     include-all: true
     filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
