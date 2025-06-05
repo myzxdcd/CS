@@ -11,7 +11,7 @@ proxy-groups:
       -美国智选
       -韩国智选
       -手动切换
-      - DIRECT
+      -DIRECT
     icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
   - name: 手动切换
     include-all: true
@@ -130,7 +130,7 @@ proxy-groups:
   - name: 国内媒体
     type: select
     proxies:
-      - DIRECT
+      -DIRECT
       -香港智选
       -台湾智选
       -新加坡智选
@@ -220,14 +220,14 @@ proxy-groups:
     include-all: true
     filter: (?i)网易|音乐|NetEase|Music
     proxies:
-      - DIRECT
+      -DIRECT
       -节点选择
       -自动选择
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netease_Music.png
   - name: 全球直连
     type: select
     proxies:
-      - DIRECT
+      -DIRECT
       -节点选择
       -自动选择
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
@@ -248,7 +248,7 @@ proxy-groups:
     proxies:
       -节点选择
       -自动选择
-      - DIRECT
+      -DIRECT
       -香港智选
       -台湾智选
       -新加坡智选
