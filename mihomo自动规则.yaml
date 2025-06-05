@@ -1,6 +1,6 @@
 # 策略组
 proxy-groups:
-  - name: 🚀 节点选择
+  - name: 节点选择
     type: select
     proxies:
       - ♻️ 自动选择
@@ -12,18 +12,22 @@ proxy-groups:
       - 🇰🇷 韩国智选
       - 🚀 手动切换
       - DIRECT
-  - name: 🚀 手动切换
+    icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
+  - name: 手动切换
     include-all: true
     type: select
-  - name: ♻️ 自动选择
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
+  - name: 自动选择
     type: url-test
     include-all: true
     interval: 300
     tolerance: 50
-  - name: 🚀 特殊使用
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+  - name: 特殊使用
     include-all: true
     type: select
-  - name: 📲 电报消息
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+  - name: 电报消息
     type: select
     proxies:
       - 🚀 节点选择
@@ -36,7 +40,8 @@ proxy-groups:
       - 🇰🇷 韩国智选
       - 🚀 手动切换
       - DIRECT
-  - name: 💬 OpenAi
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+  - name:  OpenAi
     type: select
     proxies:
       - 🚀 节点选择
@@ -49,7 +54,8 @@ proxy-groups:
       - 🇰🇷 韩国智选
       - 🚀 手动切换
       - DIRECT
-  - name: 📹 油管视频
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
+  - name: 油管视频
     type: select
     proxies:
       - 🚀 节点选择
@@ -62,7 +68,8 @@ proxy-groups:
       - 🇰🇷 韩国智选
       - 🚀 手动切换
       - DIRECT
-  - name: 📹 TikTok
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+  - name: TikTok
     type: select
     proxies:
       - 🚀 节点选择
@@ -75,7 +82,8 @@ proxy-groups:
       - 🇰🇷 韩国智选
       - 🚀 手动切换
       - DIRECT
-  - name: 🎥 奈飞视频
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
+  - name: 奈飞视频
     type: select
     proxies:
       - 🚀 节点选择
@@ -89,20 +97,23 @@ proxy-groups:
       - 🇰🇷 韩国智选
       - 🚀 手动切换
       - DIRECT
-  - name: 📺 巴哈姆特
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
+  - name: 巴哈姆特
     type: select
     proxies:
       - 🇨🇳 台湾智选
       - 🚀 节点选择
       - 🚀 手动切换
       - DIRECT
-  - name: 📺 哔哩哔哩
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bahamut.png
+  - name: 哔哩哔哩
     type: select
     proxies:
       - 🎯 全球直连
       - 🇨🇳 台湾智选
       - 🇭🇰 香港智选
-  - name: 🌍 国外媒体
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/bilibili_3.png
+  - name: 国外媒体
     type: select
     proxies:
       - 🚀 节点选择
@@ -115,7 +126,8 @@ proxy-groups:
       - 🇰🇷 韩国智选
       - 🚀 手动切换
       - DIRECT
-  - name: 🌏 国内媒体
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
+  - name: 国内媒体
     type: select
     proxies:
       - DIRECT
@@ -124,19 +136,8 @@ proxy-groups:
       - 🇸🇬 新加坡智选
       - 🇯🇵 日本智选
       - 🚀 手动切换
-  - name: 📢 谷歌FCM
-    type: select
-    proxies:
-      - DIRECT
-      - 🚀 节点选择
-      - 🇺🇲 美国智选
-      - 🇭🇰 香港智选
-      - 🇨🇳 台湾智选
-      - 🇸🇬 新加坡智选
-      - 🇯🇵 日本智选
-      - 🇰🇷 韩国智选
-      - 🚀 手动切换
-  - name: Ⓜ️ 微软Bing
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+  - name: 谷歌FCM
     type: select
     proxies:
       - DIRECT
@@ -148,7 +149,8 @@ proxy-groups:
       - 🇯🇵 日本智选
       - 🇰🇷 韩国智选
       - 🚀 手动切换
-  - name: Ⓜ️ 微软云盘
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
+  - name: 微软Bing
     type: select
     proxies:
       - DIRECT
@@ -160,19 +162,8 @@ proxy-groups:
       - 🇯🇵 日本智选
       - 🇰🇷 韩国智选
       - 🚀 手动切换
-  - name: Ⓜ️ 微软服务
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - DIRECT
-      - 🇺🇲 美国智选
-      - 🇭🇰 香港智选
-      - 🇨🇳 台湾智选
-      - 🇸🇬 新加坡智选
-      - 🇯🇵 日本智选
-      - 🇰🇷 韩国智选
-      - 🚀 手动切换
-  - name: 🍎 苹果服务
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
+  - name: 微软云盘
     type: select
     proxies:
       - DIRECT
@@ -184,7 +175,21 @@ proxy-groups:
       - 🇯🇵 日本智选
       - 🇰🇷 韩国智选
       - 🚀 手动切换
-  - name: 🎮 游戏平台
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
+  - name: 微软服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - DIRECT
+      - 🇺🇲 美国智选
+      - 🇭🇰 香港智选
+      - 🇨🇳 台湾智选
+      - 🇸🇬 新加坡智选
+      - 🇯🇵 日本智选
+      - 🇰🇷 韩国智选
+      - 🚀 手动切换
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
+  - name: 苹果服务
     type: select
     proxies:
       - DIRECT
@@ -196,7 +201,21 @@ proxy-groups:
       - 🇯🇵 日本智选
       - 🇰🇷 韩国智选
       - 🚀 手动切换
-  - name: 🎶 网易音乐
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
+  - name: 游戏平台
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - 🇺🇲 美国智选
+      - 🇭🇰 香港智选
+      - 🇨🇳 台湾智选
+      - 🇸🇬 新加坡智选
+      - 🇯🇵 日本智选
+      - 🇰🇷 韩国智选
+      - 🚀 手动切换
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+  - name: 网易音乐
     type: select
     include-all: true
     filter: (?i)网易|音乐|NetEase|Music
@@ -204,23 +223,27 @@ proxy-groups:
       - DIRECT
       - 🚀 节点选择
       - ♻️ 自动选择
-  - name: 🎯 全球直连
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netease_Music.png
+  - name: 全球直连
     type: select
     proxies:
       - DIRECT
       - 🚀 节点选择
       - ♻️ 自动选择
-  - name: 🛑 广告拦截
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
+  - name: 广告拦截
     type: select
     proxies:
       - REJECT
       - DIRECT
-  - name: 🍃 应用净化
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Reject.png
+  - name: 应用净化
     type: select
     proxies:
       - REJECT
       - DIRECT
-  - name: 🐟 漏网之鱼
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Reject.png
+  - name: 漏网之鱼
     type: select
     proxies:
       - 🚀 节点选择
@@ -233,46 +256,54 @@ proxy-groups:
       - 🇺🇲 美国智选
       - 🇰🇷 韩国智选
       - 🚀 手动切换
-  - name: 🇭🇰 香港智选
+    icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
+  - name: 香港智选
     include-all: true
     filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
     type: url-test
     interval: 300
     tolerance: 50
-  - name: 🇨🇳 台湾智选
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+  - name: 台湾智选
     include-all: true
     filter: (?i)台|新北|彰化|TW|Taiwan
     type: url-test
     interval: 300
     tolerance: 50
-  - name: 🇯🇵 日本智选
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+  - name: 日本智选
     include-all: true
     filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
     type: url-test
     interval: 300
     tolerance: 50
-  - name: 🇺🇲 美国智选
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+  - name: 美国智选
     include-all: true
     filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
     type: url-test
     interval: 300
     tolerance: 50
-  - name: 🇸🇬 新加坡智选
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
+  - name: 新加坡智选
     include-all: true
     filter: (?i)新加坡|坡|狮城|SG|Singapore
     type: url-test
     interval: 300
     tolerance: 50
-  - name: 🇰🇷 韩国智选
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+  - name: 韩国智选
     include-all: true
     filter: (?i)KR|Korea|KOR|首尔|韩|韓|South Korea
     type: url-test
     interval: 300
     tolerance: 50
-  - name: 🎥 奈飞节点
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png
+  - name: 奈飞节点
     include-all: true
     filter: (?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体
     type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
 # 远程规则
 rule-providers:
   LocalAreaNetwork:
@@ -501,37 +532,37 @@ rule-providers:
     type: http 
 # 规则集域名规则
 rules:
-  - "RULE-SET,LocalAreaNetwork,🎯 全球直连"
-  - "RULE-SET,UnBan,🎯 全球直连"
-  - "RULE-SET,BanAD,🛑 广告拦截"
-  - "RULE-SET,BanProgramAD,🍃 应用净化"
-  - "RULE-SET,GoogleFCM,📢 谷歌FCM"
-  - "RULE-SET,GoogleCN,🎯 全球直连"
-  - "RULE-SET,SteamCN,🎯 全球直连"
-  - "RULE-SET,Bing,Ⓜ️ 微软Bing"
-  - "RULE-SET,OneDrive,Ⓜ️ 微软云盘"
-  - "RULE-SET,Microsoft,Ⓜ️ 微软服务"
-  - "RULE-SET,Apple,🍎 苹果服务"
-  - "RULE-SET,Telegram,📲 电报消息"
-  - "RULE-SET,OpenAi,💬 OpenAi"
-  - "RULE-SET,NetEaseMusic,🎶 网易音乐"
-  - "RULE-SET,Epic,🎮 游戏平台"
-  - "RULE-SET,Origin,🎮 游戏平台"
-  - "RULE-SET,Sony,🎮 游戏平台"
-  - "RULE-SET,Steam,🎮 游戏平台"
-  - "RULE-SET,Nintendo,🎮 游戏平台"
-  - "RULE-SET,YouTube,📹 油管视频"
-  - "RULE-SET,Netflix,🎥 奈飞视频"
-  - "RULE-SET,Bahamut,📺 巴哈姆特"
-  - "RULE-SET,BilibiliHMT,📺 哔哩哔哩"
-  - "RULE-SET,Bilibili,📺 哔哩哔哩"
-  - "RULE-SET,ChinaMedia,🌏 国内媒体"
-  - "RULE-SET,TikTok,📹 TikTok"
-  - "RULE-SET,HT,🚀 特殊使用"
-  - "RULE-SET,ProxyMedia,🌍 国外媒体"
-  - "RULE-SET,ProxyGFWlist,🚀 节点选择"
-  - "RULE-SET,ChinaDomain,🎯 全球直连"
-  - "RULE-SET,ChinaCompanyIp,🎯 全球直连"
-  - "RULE-SET,Download,🎯 全球直连"
-  - "GEOIP,CN,🎯 全球直连"
-  - "MATCH,🐟 漏网之鱼"
+  - "RULE-SET,LocalAreaNetwork,全球直连"
+  - "RULE-SET,UnBan,全球直连"
+  - "RULE-SET,BanAD,广告拦截"
+  - "RULE-SET,BanProgramAD,应用净化"
+  - "RULE-SET,GoogleFCM,谷歌FCM"
+  - "RULE-SET,GoogleCN,全球直连"
+  - "RULE-SET,SteamCN,全球直连"
+  - "RULE-SET,Bing,微软Bing"
+  - "RULE-SET,OneDrive,微软云盘"
+  - "RULE-SET,Microsoft,微软服务"
+  - "RULE-SET,Apple,苹果服务"
+  - "RULE-SET,Telegram,电报消息"
+  - "RULE-SET,OpenAi,OpenAi"
+  - "RULE-SET,NetEaseMusic,网易音乐"
+  - "RULE-SET,Epic,游戏平台"
+  - "RULE-SET,Origin,游戏平台"
+  - "RULE-SET,Sony,游戏平台"
+  - "RULE-SET,Steam,游戏平台"
+  - "RULE-SET,Nintendo,游戏平台"
+  - "RULE-SET,YouTube,油管视频"
+  - "RULE-SET,Netflix,奈飞视频"
+  - "RULE-SET,Bahamut,巴哈姆特"
+  - "RULE-SET,BilibiliHMT,哔哩哔哩"
+  - "RULE-SET,Bilibili,哔哩哔哩"
+  - "RULE-SET,ChinaMedia,国内媒体"
+  - "RULE-SET,TikTok,TikTok"
+  - "RULE-SET,HT,特殊使用"
+  - "RULE-SET,ProxyMedia,国外媒体"
+  - "RULE-SET,ProxyGFWlist,节点选择"
+  - "RULE-SET,ChinaDomain,全球直连"
+  - "RULE-SET,ChinaCompanyIp,全球直连"
+  - "RULE-SET,Download,全球直连"
+  - "GEOIP,CN,全球直连"
+  - "MATCH,漏网之鱼"
