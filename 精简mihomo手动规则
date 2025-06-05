@@ -418,6 +418,13 @@ rule-providers:
     interval: 86400
     format: text
     type: http 
+  ChinaIp:
+    url: https://raw.githubusercontent.com/myzxdcd/ACL4SSR/refs/heads/master/Clash/ChinaIp.list
+    path: ./Ruleset/ChinaIp.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
 #规则集
 rules:
   - "RULE-SET,LocalAreaNetwork, 全球直连"
@@ -437,5 +444,6 @@ rules:
   - "RULE-SET,ChinaDomain, 全球直连"
   - "RULE-SET,ChinaCompanyIp, 全球直连"
   - "RULE-SET,Download, 全球直连"
+  - "RULE-SET,ChinaIp,全球直连"
   - "GEOIP,CN, 全球直连"
   - "MATCH, 漏网之鱼"
