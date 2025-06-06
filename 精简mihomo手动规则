@@ -405,7 +405,7 @@ rule-providers:
     format: text
     type: http
   TikTok:
-    url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/YouTube.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list
     path: ./Ruleset/TikTok.list
     behavior: classical
     interval: 86400
