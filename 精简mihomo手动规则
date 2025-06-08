@@ -17,7 +17,7 @@ proxy-groups:
   - name: 手动切换
     include-all: true
     type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_Update.png
   - name: 自动选择
     type: url-test
     include-all: true
