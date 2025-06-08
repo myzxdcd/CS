@@ -112,7 +112,7 @@ proxy-groups:
       - 韩国节点
       - 手动切换
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
-  - name: 谷歌FCM
+  - name: Google
     type: select
     proxies:
       - DIRECT
@@ -184,9 +184,9 @@ proxy-groups:
 
 #远程规则配置
 rule-providers:
-  GoogleFCM:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleFCM.list
-    path: ./ruleset/GoogleFCM.list
+  Google:
+    url: https://raw.githubusercontent.com/myzxdcd/ACL4SSR/refs/heads/master/Clash/Ruleset/Google.list
+    path: ./ruleset/Google.list
     behavior: classical
     interval: 86400
     format: text
@@ -256,7 +256,7 @@ rule-providers:
     type: http
 #规则集 可任意添加但是需要对应上面的策略组，如添加Instagram需要写- "RULE-SET,Instagram, Instagram"第一个Instagram是策略组，第二个则是对应的规则
 rules:
-  - "RULE-SET,GoogleFCM, 谷歌FCM"
+  - "RULE-SET,Google, Google"
   - "RULE-SET,SteamCN, 全球直连"
   - "RULE-SET,Telegram, 电报消息"
   - "RULE-SET,OpenAi, OpenAi"
