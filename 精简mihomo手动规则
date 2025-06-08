@@ -155,7 +155,7 @@ proxy-groups:
     include-all: true
     filter: (?i)台|新北|彰化|TW|Taiwan
     type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
   - name: 日本节点
     include-all: true
     filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
