@@ -185,35 +185,35 @@ proxy-groups:
 #远程规则配置
 rule-providers:
   Google:
-    url: https://raw.githubusercontent.com/myzxdcd/ACL4SSR/refs/heads/master/Clash/Ruleset/Google.list
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list
     path: ./ruleset/Google.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   SteamCN:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/SteamCN.list
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/SteamCN/SteamCN.list
     path: ./ruleset/SteamCN.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   Apple:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Apple.list
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Apple/Apple.list
     path: ./ruleset/Apple.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   Telegram:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Telegram.list
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram.list
     path: ./ruleset/Telegram.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   OpenAi:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/OpenAi.list
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/OpenAI/OpenAI.list
     path: ./ruleset/OpenAi.list
     behavior: classical
     interval: 86400
@@ -227,7 +227,7 @@ rule-providers:
     format: text
     type: http
   Netflix:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Netflix.list
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Netflix/Netflix.list
     path: ./ruleset/Netflix.list
     behavior: classical
     interval: 86400
@@ -248,8 +248,8 @@ rule-providers:
     format: text
     type: http 
   ChinaIp:
-    url: https://raw.githubusercontent.com/myzxdcd/ACL4SSR/refs/heads/master/Clash/ChinaIp.list
-    path: ./Ruleset/ChinaIp.list
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/ChinaIPs/ChinaIPs.list
+    path: ./Ruleset/ChinaIPs.list
     behavior: classical
     interval: 86400
     format: text
