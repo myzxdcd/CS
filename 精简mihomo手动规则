@@ -254,6 +254,13 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  Lan:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Lan/Lan.list
+    path: ./Ruleset/Lan.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
 #规则集 可任意添加但是需要对应上面的策略组，如添加Instagram需要写- "RULE-SET,Instagram, Instagram"第一个Instagram是策略组，第二个则是对应的规则
 rules:
   - "RULE-SET,Google, Google"
@@ -267,4 +274,5 @@ rules:
   - "RULE-SET,HT,特殊使用"
   - "RULE-SET,ChinaIp,全球直连"
   - "GEOIP,CN, 全球直连"
+  - "RULE-SET,Lan,全球直连"
   - "MATCH, 漏网之鱼"
