@@ -7,7 +7,7 @@ proxy-providers:
   # 订阅1：可填写机场订阅链接（建议命名规范统一）
   Subscription-1:
     type: http
-    url: ''       #''填写订阅机场链接
+    url: ''       #''中填写订阅机场链接
     interval: 1800
     path: ./providers/Subscription-1.yaml
     health-check:
@@ -18,7 +18,7 @@ proxy-providers:
   # 订阅2：可填写机场订阅链接
   Subscription-2:
     type: http
-    url: ''       #''填写订阅机场链接
+    url: ''       #''中填写订阅机场链接
     interval: 1800
     path: ./providers/Subscription-2.yaml
     health-check:
@@ -29,7 +29,7 @@ proxy-providers:
   # 订阅3：可填写机场订阅链接
   Subscription-3:
     type: http
-    url: ''       #''填写订阅机场链接
+    url: ''       #''中填写订阅机场链接
     interval: 1800
     path: ./providers/Subscription-3.yaml
     health-check:
