@@ -1,8 +1,12 @@
-#策略组，可根据需求添加例如：Instagram但是需要分配节点组，美国节点、新加坡节点等
-#icon可使用链接也可以使用emoji图标亦可以不使用图标
+# 代理策略组配置（proxy-groups）
+# 通过策略组，可以将不同用途的流量分配到对应的代理节点组。
+# 例如，Instagram 类应用可以指定美国、新加坡节点等。
+# icon 支持图片链接或 emoji，非必须，可根据喜好调整。
+
 proxy-groups:
+  # 基础节点选择组，允许用户手动或自动选择节点
   - name: 节点选择
-    type: select
+    type: select              # 类型为“选择”，允许用户手动切换节点
     proxies:
       - 自动选择
       - 香港节点
@@ -12,22 +16,30 @@ proxy-groups:
       - 美国节点
       - 韩国节点
       - 手动切换
-      - DIRECT
+      - DIRECT               # 直连，不走代理
     icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
+
+  # 手动切换节点组，包含所有代理节点
   - name: 手动切换
-    include-all: true
     type: select
+    include-all: true         # 包含所有已配置的代理节点
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_Update.png
+
+  # 自动选择组，根据延迟测试自动选择最佳节点
   - name: 自动选择
-    type: url-test
-    include-all: true
-    interval: 86400
-    tolerance: 50
+    type: url-test            # 通过访问指定网址测试延迟自动选择最快节点
+    include-all: true         # 包含所有节点
+    interval: 86400           # 测试间隔，单位秒，这里为24小时
+    tolerance: 50             # 延迟容忍值，单位毫秒，超过该值的节点不会被选
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+
+  # 特殊用途组，比如游戏专用节点等
   - name: 特殊使用
-    include-all: true
     type: select
+    include-all: true
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+
+  # 针对 Telegram 消息的代理组
   - name: 电报消息
     type: select
     proxies:
@@ -42,6 +54,8 @@ proxy-groups:
       - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+
+  # OpenAI 相关代理组
   - name: OpenAi
     type: select
     proxies:
@@ -56,6 +70,8 @@ proxy-groups:
       - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
+
+  # YouTube 视频专用代理组
   - name: 油管视频
     type: select
     proxies:
@@ -70,6 +86,8 @@ proxy-groups:
       - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+
+  # TikTok 相关代理组
   - name: TikTok
     type: select
     proxies:
@@ -84,12 +102,14 @@ proxy-groups:
       - 手动切换
       - DIRECT
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
+
+  # Netflix 视频专用代理组，额外包含“奈飞节点”
   - name: 奈飞视频
     type: select
     proxies:
       - 节点选择
       - 自动选择
-      - 奈飞节点
+      - 奈飞节点          # 专门针对Netflix解锁优化的节点
       - 新加坡节点
       - 香港节点
       - 台湾节点
@@ -99,10 +119,11 @@ proxy-groups:
       - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
+
+  # Google 相关流量代理组
   - name: Google
     type: select
     proxies:
-      - DIRECT
       - 节点选择
       - 美国节点
       - 香港节点
@@ -111,7 +132,10 @@ proxy-groups:
       - 日本节点
       - 韩国节点
       - 手动切换
+      - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
+
+  # Apple AppStore 代理组，优先直连
   - name: AppStore
     type: select
     proxies:
@@ -125,13 +149,17 @@ proxy-groups:
       - 韩国节点
       - 手动切换
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
-  - name:  全球直连
+
+  # 全球直连，通常用于非代理或国内流量优先走直连
+  - name: 全球直连
     type: select
     proxies:
       - DIRECT
       - 节点选择
       - 自动选择
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+
+  # 漏网之鱼，用于匹配未被其他规则匹配的流量，作为最后兜底策略
   - name: 漏网之鱼
     type: select
     proxies:
@@ -146,43 +174,58 @@ proxy-groups:
       - 韩国节点
       - 手动切换
     icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
+
+  # 各区域节点组，自动筛选符合正则表达式的节点
+  # include-all: true 表示自动包含所有匹配的节点
+  # filter 字段是正则表达式，用于匹配节点名，方便分组管理
+
   - name: 香港节点
-    include-all: true
-    filter: (?i)港|HK|hk|Hong Kong|HongKong|hongkong
     type: select
+    include-all: true
+    filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+
   - name: 台湾节点
-    include-all: true
-    filter: (?i)台|新北|彰化|TW|Taiwan
     type: select
+    include-all: true
+    filter: "(?i)台|新北|彰化|TW|Taiwan"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
+
   - name: 日本节点
-    include-all: true
-    filter: (?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan
     type: select
+    include-all: true
+    filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+
   - name: 美国节点
-    include-all: true
-    filter: (?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
     type: select
+    include-all: true
+    filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
+
   - name: 新加坡节点
-    include-all: true
-    filter: (?i)新加坡|坡|狮城|SG|Singapore
     type: select
+    include-all: true
+    filter: "(?i)新加坡|坡|狮城|SG|Singapore"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+
   - name: 韩国节点
-    include-all: true
-    filter: (?i)KR|Korea|KOR|首尔|韩|韓
     type: select
+    include-all: true
+    filter: "(?i)KR|Korea|KOR|首尔|韩|韓"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png
-  - name:  奈飞节点
-    include-all: true
-    filter: (?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体
+
+  - name: 奈飞节点
     type: select
+    include-all: true
+    filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
 
-#远程规则配置
+
+# 远程规则配置（rule-providers）
+# 这些规则通过远程链接更新，定时下载对应的规则列表文件。
+# behavior: classical 表示经典行为，interval单位秒，86400秒为一天。
+
 rule-providers:
   Google:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list
@@ -191,6 +234,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+
   SteamCN:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/SteamCN/SteamCN.list
     path: ./ruleset/SteamCN.list
@@ -198,6 +242,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+
   Apple:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Apple/Apple.list
     path: ./ruleset/Apple.list
@@ -205,6 +250,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+
   Telegram:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram.list
     path: ./ruleset/Telegram.list
@@ -212,6 +258,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+
   OpenAi:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/OpenAI/OpenAI.list
     path: ./ruleset/OpenAi.list
@@ -219,6 +266,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+
   YouTube:
     url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/YouTube.yaml
     path: ./ruleset/YouTube.list
@@ -226,6 +274,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+
   Netflix:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Netflix/Netflix.list
     path: ./ruleset/Netflix.list
@@ -233,6 +282,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+
   TikTok:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list
     path: ./Ruleset/TikTok.list
@@ -240,13 +290,15 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+
   HT:
     url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/HT
     path: ./Ruleset/HT
     behavior: classical
     interval: 86400
     format: text
-    type: http 
+    type: http
+
   ChinaIp:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/ChinaIPs/ChinaIPs.list
     path: ./Ruleset/ChinaIPs.list
@@ -254,6 +306,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+
   Lan:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Lan/Lan.list
     path: ./Ruleset/Lan.list
@@ -261,7 +314,13 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-#规则集 可任意添加但是需要对应上面的策略组，如添加Instagram需要写- "RULE-SET,Instagram, Instagram"第一个Instagram是策略组，第二个则是对应的规则
+
+
+# 规则集配置（rules）
+# 规则通过规则集调用上面远程规则配置对应的策略组，实现自动流量分流。
+# 例如：- "RULE-SET,Google, Google"
+# 第一个Google是规则集名称，第二个Google是策略组名称。
+
 rules:
   - "RULE-SET,Google, Google"
   - "RULE-SET,SteamCN, 全球直连"
@@ -273,6 +332,6 @@ rules:
   - "RULE-SET,Apple, AppStore"
   - "RULE-SET,HT,特殊使用"
   - "RULE-SET,ChinaIp,全球直连"
-  - "GEOIP,CN, 全球直连"
   - "RULE-SET,Lan,全球直连"
-  - "MATCH, 漏网之鱼"
+  - "GEOIP,CN, 全球直连"    # 中国大陆IP直连
+  - "MATCH, 漏网之鱼"        # 兜底规则，未匹配流量走“漏网之鱼”组
