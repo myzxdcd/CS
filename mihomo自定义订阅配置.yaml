@@ -51,17 +51,8 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
-
-  - name: 手动切换
-    type: select
-    use:
-      - Subscription-1
-      - Subscription-2
-      - Subscription-3
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_Update.png
 
   - name: 自动选择
     type: url-test
@@ -84,7 +75,6 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
 
@@ -99,7 +89,6 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
 
@@ -114,7 +103,6 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 
@@ -129,7 +117,6 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
 
@@ -145,7 +132,6 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
 
@@ -159,7 +145,6 @@ proxy-groups:
       - 新加坡节点
       - 日本节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
 
@@ -174,7 +159,6 @@ proxy-groups:
       - 新加坡节点
       - 日本节点
       - 韩国节点
-      - 手动切换
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
 
   - name: 全球直连
@@ -190,14 +174,13 @@ proxy-groups:
     proxies:
       - 节点选择
       - 自动选择
-      - DIRECT
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
+      - DIRECT
     icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
 
   - name: 香港节点
