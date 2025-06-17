@@ -212,30 +212,6 @@ proxy-groups:
 # behavior: classical 表示经典行为，interval单位秒，86400秒为一天。
 
 rule-providers:
-  Google:
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list
-    path: ./ruleset/Google.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
-
-  SteamCN:
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/SteamCN/SteamCN.list
-    path: ./ruleset/SteamCN.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
-
-  Apple:
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Apple/Apple.list
-    path: ./ruleset/Apple.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
-
   Telegram:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram.list
     path: ./ruleset/Telegram.list
@@ -275,6 +251,31 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  Google:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list
+    path: ./ruleset/Google.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  SteamCN:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/SteamCN/SteamCN.list
+    path: ./ruleset/SteamCN.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Apple:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Apple/Apple.list
+    path: ./ruleset/Apple.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+
 
   HT:
     url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/HT
@@ -307,15 +308,15 @@ rule-providers:
 # 第一个Google是规则集名称，第二个Google是策略组名称。
 
 rules:
-  - "RULE-SET,Google, Google"
-  - "RULE-SET,SteamCN, 全球直连"
   - "RULE-SET,Telegram, 电报消息"
   - "RULE-SET,OpenAi, OpenAi"
   - "RULE-SET,YouTube, 油管视频"
   - "RULE-SET,Netflix, 奈飞视频"
   - "RULE-SET,TikTok, TikTok"
+  - "RULE-SET,Google, Google"
   - "RULE-SET,Apple, AppStore"
   - "RULE-SET,HT,特殊使用"
+  - "RULE-SET,SteamCN, 全球直连"
   - "RULE-SET,ChinaIp,全球直连"
   - "RULE-SET,Lan,全球直连"
   - "GEOIP,CN, 全球直连"    # 中国大陆IP直连
