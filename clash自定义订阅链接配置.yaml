@@ -1,0 +1,534 @@
+# ======================= 节点订阅来源配置（proxy-providers） =======================
+# 可用于添加多个机场订阅，Clash 会自动拉取节点供策略组使用。
+# 每个订阅会作为一个节点集合，支持定时更新与健康检查。
+# 如需添加更多机场，按下方格式复制并修改即可。
+
+proxy-providers:
+  # 订阅1：可填写机场订阅链接（建议命名规范统一）
+  Subscription-1:
+    type: http
+    url: ''       #''填写订阅机场链接
+    interval: 1800
+    path: ./providers/Subscription-1.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+
+  # 订阅2：可填写机场订阅链接
+  Subscription-2:
+    type: http
+    url: ''       #''填写订阅机场链接
+    interval: 1800
+    path: ./providers/Subscription-2.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+
+  # 订阅3：可填写机场订阅链接
+  Subscription-3:
+    type: http
+    url: ''       #''填写订阅机场链接
+    interval: 1800
+    path: ./providers/Subscription-3.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+
+# ======================= 策略组配置（proxy-groups） =======================
+# 策略组用于定义节点的选择逻辑，可用于特定软件或网站走不同线路。
+# icon 可使用 emoji 或图片链接，美化管理界面。
+proxy-groups:
+  - name: 节点选择
+    type: select
+    proxies:
+      - 自动选择
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - DIRECT
+    icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
+
+  - name: 自动选择
+    type: url-test
+    use:
+      - Subscription-1
+      - Subscription-2
+      - Subscription-3
+    interval: 86400
+    tolerance: 50
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+
+  - name: 电报消息
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 新加坡节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+
+  - name: OpenAi
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 新加坡节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
+
+  - name: 油管视频
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 新加坡节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+
+  - name: TikTok
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 新加坡节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - DIRECT
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
+
+  - name: 奈飞视频
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 奈飞节点
+      - 新加坡节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
+
+  - name: Google
+    type: select
+    proxies:
+      - 节点选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
+
+  - name: GitHub
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub_Letter.png
+
+  - name: Disney
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 奈飞节点
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Disney.png
+
+  - name: Twitter
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
+
+  - name: Facebook
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png
+
+  - name: Instagram
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Instagram.png
+
+  - name: Spotify
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
+
+  - name: OneDrive
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/OneDrive.png
+
+  - name: 漏网之鱼
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - DIRECT
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+    icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
+    
+  - name: AppStore
+    type: select
+    proxies:
+      - DIRECT
+      - 节点选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
+
+  - name: 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 节点选择
+      - 自动选择
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+    
+  - name: 香港节点
+    type: url-test
+    use:
+      - Subscription-1
+      - Subscription-2
+      - Subscription-3
+    filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+
+  - name: 台湾节点
+    type: url-test
+    use:
+      - Subscription-1
+      - Subscription-2
+      - Subscription-3
+    filter: "(?i)台|新北|彰化|TW|Taiwan"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
+
+  - name: 日本节点
+    type: url-test
+    use:
+      - Subscription-1
+      - Subscription-2
+      - Subscription-3
+    filter: "(?i)日本|东京|大阪|JP|Japan"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+
+  - name: 美国节点
+    type: url-test
+    use:
+      - Subscription-1
+      - Subscription-2
+      - Subscription-3
+    filter: "(?i)美|洛杉矶|圣何塞|US|United States"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
+
+  - name: 新加坡节点
+    type: url-test
+    use:
+      - Subscription-1
+      - Subscription-2
+      - Subscription-3
+    filter: "(?i)新加坡|坡|SG|Singapore"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+
+  - name: 韩国节点
+    type: url-test
+    use:
+      - Subscription-1
+      - Subscription-2
+      - Subscription-3
+    filter: "(?i)KR|Korea|韩|韓"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png
+
+  - name: 奈飞节点
+    type: url-test
+    use:
+      - Subscription-1
+      - Subscription-2
+      - Subscription-3
+    filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
+
+# 远程规则配置（rule-providers）
+# 这些规则通过远程链接更新，定时下载对应的规则列表文件。
+# behavior: classical 表示经典行为，interval单位秒，86400秒为一天。
+
+rule-providers:
+  Google:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list
+    path: ./ruleset/Google.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  SteamCN:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/SteamCN/SteamCN.list
+    path: ./ruleset/SteamCN.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Apple:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Apple/Apple.list
+    path: ./ruleset/Apple.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Telegram:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram.list
+    path: ./ruleset/Telegram.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  OpenAi:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/OpenAI/OpenAI.list
+    path: ./ruleset/OpenAi.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  
+  GitHub:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GitHub/GitHub.list
+    path: ./ruleset/GitHub.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Disney:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Disney/Disney.list
+    path: ./ruleset/Disney.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Twitter:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Twitter/Twitter.list
+    path: ./ruleset/Twitter.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Facebook:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Facebook/Facebook.list
+    path: ./ruleset/Facebook.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Instagram:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Instagram/Instagram.list
+    path: ./ruleset/Instagram.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Spotify:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Spotify/Spotify.list
+    path: ./ruleset/Spotify.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  OneDrive:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/OneDrive/OneDrive.list
+    path: ./ruleset/OneDrive.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  YouTube:
+    url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/YouTube.yaml
+    path: ./ruleset/YouTube.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Netflix:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Netflix/Netflix.list
+    path: ./ruleset/Netflix.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  TikTok:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list
+    path: ./Ruleset/TikTok.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  ChinaIp:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/ChinaIPs/ChinaIPs.list
+    path: ./Ruleset/ChinaIPs.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Lan:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Lan/Lan.list
+    path: ./Ruleset/Lan.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+# 规则集配置（rules）
+# 规则通过规则集调用上面远程规则配置对应的策略组，实现自动流量分流。
+# 例如：- "RULE-SET,Google, Google"
+# 第一个Google是规则集名称，第二个Google是策略组名称。
+
+rules:  
+  - "RULE-SET,OpenAi, OpenAi"
+  - "RULE-SET,YouTube, 油管视频"
+  - "RULE-SET,Netflix, 奈飞视频"
+  - "RULE-SET,TikTok, TikTok"
+  - "RULE-SET,Apple, AppStore"
+  - "RULE-SET,GitHub, GitHub"
+  - "RULE-SET,Disney, Disney"
+  - "RULE-SET,Twitter, Twitter"
+  - "RULE-SET,Facebook, Facebook"
+  - "RULE-SET,Instagram, Instagram"
+  - "RULE-SET,Spotify, Spotify"
+  - "RULE-SET,OneDrive, OneDrive"
+  - "RULE-SET,Google, Google"
+  - "RULE-SET,Telegram, 电报消息"
+  - "RULE-SET,SteamCN, 全球直连"
+  - "RULE-SET,ChinaIp,全球直连"
+  - "RULE-SET,Lan,全球直连"
+  - "GEOIP,CN, 全球直连"    # 中国大陆IP直连
+  - "MATCH, 漏网之鱼"        # 兜底规则，未匹配流量走“漏网之鱼”组
