@@ -15,15 +15,8 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - DIRECT               # 直连，不走代理
     icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
-
-  # 手动切换节点组，包含所有代理节点
-  - name: 手动切换
-    type: select
-    include-all: true         # 包含所有已配置的代理节点
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_Update.png
 
   # 自动选择组，根据延迟测试自动选择最佳节点
   - name: 自动选择
@@ -51,7 +44,6 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
 
@@ -67,7 +59,6 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
 
@@ -83,7 +74,6 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 
@@ -99,7 +89,6 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
 
@@ -116,7 +105,6 @@ proxy-groups:
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
 
@@ -131,7 +119,6 @@ proxy-groups:
       - 新加坡节点
       - 日本节点
       - 韩国节点
-      - 手动切换
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
 
@@ -147,7 +134,6 @@ proxy-groups:
       - 新加坡节点
       - 日本节点
       - 韩国节点
-      - 手动切换
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
 
   # 全球直连，通常用于非代理或国内流量优先走直连
@@ -164,15 +150,14 @@ proxy-groups:
     type: select
     proxies:
       - 节点选择
-      - 自动选择
-      - DIRECT
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
+      - 自动选择
+      - DIRECT
     icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
 
   # 各区域节点组，自动筛选符合正则表达式的节点
