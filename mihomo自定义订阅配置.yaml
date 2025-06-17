@@ -512,10 +512,7 @@ rule-providers:
 # 例如：- "RULE-SET,Google, Google"
 # 第一个Google是规则集名称，第二个Google是策略组名称。
 
-rules:
-  - "RULE-SET,Google, Google"
-  - "RULE-SET,SteamCN, 全球直连"
-  - "RULE-SET,Telegram, 电报消息"
+rules:  
   - "RULE-SET,OpenAi, OpenAi"
   - "RULE-SET,YouTube, 油管视频"
   - "RULE-SET,Netflix, 奈飞视频"
@@ -528,6 +525,9 @@ rules:
   - "RULE-SET,Instagram, Instagram"
   - "RULE-SET,Spotify, Spotify"
   - "RULE-SET,OneDrive, OneDrive"
+  - "RULE-SET,Google, Google"
+  - "RULE-SET,SteamCN, 全球直连"
+  - "RULE-SET,Telegram, 电报消息"
   - "RULE-SET,ChinaIp,全球直连"
   - "RULE-SET,Lan,全球直连"
   - "GEOIP,CN, 全球直连"    # 中国大陆IP直连
