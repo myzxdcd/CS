@@ -7,8 +7,8 @@ proxy-providers:
   # 订阅1：可填写机场订阅链接（建议命名规范统一）
   Subscription-1:
     type: http
-    url: ''       #''中填写订阅机场链接
-    interval: 1800
+    url: "换成订阅链接"       #""中填写订阅机场链接
+    interval: 86400
     path: ./providers/Subscription-1.yaml
     health-check:
       enable: true
@@ -18,8 +18,8 @@ proxy-providers:
   # 订阅2：可填写机场订阅链接
   Subscription-2:
     type: http
-    url: ''       #''中填写订阅机场链接
-    interval: 1800
+    url: "换成订阅链接"       #""中填写订阅机场链接
+    interval: 86400
     path: ./providers/Subscription-2.yaml
     health-check:
       enable: true
@@ -29,8 +29,8 @@ proxy-providers:
   # 订阅3：可填写机场订阅链接
   Subscription-3:
     type: http
-    url: ''       #''中填写订阅机场链接
-    interval: 1800
+    url: "换成订阅链接"       #""中填写订阅机场链接
+    interval: 86400
     path: ./providers/Subscription-3.yaml
     health-check:
       enable: true
@@ -60,7 +60,7 @@ proxy-groups:
       - Subscription-1
       - Subscription-2
       - Subscription-3
-    interval: 86400
+    interval: 600
     tolerance: 50
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
 
