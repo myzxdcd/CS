@@ -91,21 +91,7 @@ proxy-groups:
       - 韩国节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
-
-  - name: 油管视频
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 新加坡节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - DIRECT
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
-
+    
   - name: TikTok
     type: select
     proxies:
@@ -147,6 +133,20 @@ proxy-groups:
       - 韩国节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
+    
+  - name: 油管视频
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 新加坡节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 
   - name: GitHub
     type: select
