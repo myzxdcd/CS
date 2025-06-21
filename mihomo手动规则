@@ -1,31 +1,31 @@
-port: 7890
+#port: 7890
 # HTTP代理监听端口。客户端需要配置此端口才能使用代理。
 # 如果端口被占用或冲突，可以更改为其他端口，比如1080、8080等。
 
-socks-port: 7891
+#socks-port: 7891
 # SOCKS5代理监听端口。
 # 部分应用支持SOCKS代理，配置时填写此端口。
 # 不使用SOCKS代理可以注释或删除。
 
-allow-lan: true
+#allow-lan: true
 # 是否允许局域网设备连接代理。
 # true：允许局域网访问，可用手机等其他设备连接。
 # false：仅本机可用。
 # 开启时请注意局域网安全，避免被恶意访问。
 
-bind-address: "*"
+#bind-address: "*"
 # 监听地址，"*"表示所有网卡。
 # 配合allow-lan=true，使局域网设备可访问代理。
 # 若只需本机访问，可设置为 127.0.0.1。
 
-mode: rule
+#mode: rule
 # 代理模式。
 # rule：基于规则判断走代理还是直连，常用模式。
 # global：全部流量走代理。
 # direct：全部流量直连，不代理。
 # script：基于脚本自定义代理逻辑。
 
-log-level: info
+#log-level: silent
 # 日志等级，影响日志输出详细程度。
 # 可选：silent（不输出日志）、error（错误）、warning（警告）、info（信息，默认）、debug（调试，最详细）。
 
@@ -422,9 +422,9 @@ rules:
   - "RULE-SET,Google, Google"
   - "RULE-SET,Apple, AppStore"
   - "RULE-SET,HT,特殊使用"
-  - "RULE-SET,ChinaIp,全球直连"
+  - "RULE-SET,ChinaIp,全球直连, no-resolve"
   - "RULE-SET,Lan,全球直连"
-  - "GEOSITE,cn, 全球直连"
+  - "GEOSITE,cn, 全球直连, no-resolve"
   - "GEOIP,CN, 全球直连, no-resolve"
   - "MATCH, 漏网之鱼"        # 兜底规则，未匹配流量走“漏网之鱼”组
 
@@ -459,7 +459,7 @@ sniffer:
 
 # ------------------- profile 配置 -------------------
 
-profile:
+#profile:
   store-selected: true
   # 是否保存用户上次选择的节点，下次启动自动选中。
   store-fake-ip: true
