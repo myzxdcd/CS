@@ -47,7 +47,7 @@ proxy-providers:
   # 订阅1：可填写机场订阅链接（建议命名规范统一）
   Subscription-1:         # 订阅名称，可自定义
     type: http
-    url: "https://tecentapi.xn--fiqs8s40dz2j.com/api/v1/client/subscribe?token=fa347943fc9915c66c8e039e1a8f333b"       #""中填写订阅机场链接
+    url: ""       #""中填写订阅机场链接
     interval: 86400
     path: ./providers/Subscription-1.yaml
     health-check:
@@ -58,7 +58,7 @@ proxy-providers:
   # 订阅2：可填写机场订阅链接
   Subscription-2:         # 订阅名称，可自定义
     type: http
-    url: "http://106.55.228.246:36666/hxvip?token=8e0154e62b452aaac0779e07ecdd3c52"       #""中填写订阅机场链接
+    url: "2"       #""中填写订阅机场链接
     interval: 86400
     path: ./providers/Subscription-2.yaml
     health-check:
@@ -69,7 +69,7 @@ proxy-providers:
   # 订阅3：可填写机场订阅链接
   Subscription-3:         # 订阅名称，可自定义
     type: http
-    url: "https://vyy.idsduf.com/api/v1/client/subscribe?token=2dbb9d52e57814f3c9b326dd0ace6979"       #""中填写订阅机场链接
+    url: ""       #""中填写订阅机场链接
     interval: 86400
     path: ./providers/Subscription-3.yaml
     health-check:
