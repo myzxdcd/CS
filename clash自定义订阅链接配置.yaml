@@ -1,13 +1,53 @@
-# ======================= 节点订阅来源配置（proxy-providers） =======================
-# 可用于添加多个机场订阅，Clash 会自动拉取节点供策略组使用。
-# 每个订阅会作为一个节点集合，支持定时更新与健康检查。
-# 如需添加更多机场，按下方格式复制并修改即可。
+port: 7890
+socks-port: 7891
+
+allow-lan: true
+bind-address: "*"
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
+
+dns:
+  enable: true
+  ipv6: false
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  fake-ip-filter:
+    - '*.lan'
+    - '*.local'
+    - 'localhost.ptlogin2.qq.com'
+    - 'stun.*.*'
+    - 'dns.msftncsi.com'
+    - 'www.msftncsi.com'
+    - '*.ntp.org.cn'
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+    - https://208.67.222.222/dns-query  
+    - tls://dns.rubyfish.cn:853
+  fallback-filter:
+    geoip: true
+    ipcidr:
+      - 240.0.0.0/4
+  proxy-server-nameserver:
+    - https://1.1.1.1/dns-query
+  default-nameserver:
+    - 114.114.114.114
+    - 8.8.8.8
+  nameserver-policy:
+    'geosite:cn':
+      - 119.29.29.29
+      - 223.5.5.5
+
 
 proxy-providers:
   # 订阅1：可填写机场订阅链接（建议命名规范统一）
-  Subscription-1:
+  Subscription-1:         # 订阅名称，可自定义
     type: http
-    url: "换成订阅链接"       #""中填写订阅机场链接
+    url: "https://tecentapi.xn--fiqs8s40dz2j.com/api/v1/client/subscribe?token=fa347943fc9915c66c8e039e1a8f333b"       #""中填写订阅机场链接
     interval: 86400
     path: ./providers/Subscription-1.yaml
     health-check:
@@ -16,9 +56,9 @@ proxy-providers:
       interval: 300
 
   # 订阅2：可填写机场订阅链接
-  Subscription-2:
+  Subscription-2:         # 订阅名称，可自定义
     type: http
-    url: "换成订阅链接"       #""中填写订阅机场链接
+    url: "http://106.55.228.246:36666/hxvip?token=8e0154e62b452aaac0779e07ecdd3c52"       #""中填写订阅机场链接
     interval: 86400
     path: ./providers/Subscription-2.yaml
     health-check:
@@ -27,9 +67,9 @@ proxy-providers:
       interval: 300
 
   # 订阅3：可填写机场订阅链接
-  Subscription-3:
+  Subscription-3:         # 订阅名称，可自定义
     type: http
-    url: "换成订阅链接"       #""中填写订阅机场链接
+    url: "https://vyy.idsduf.com/api/v1/client/subscribe?token=2dbb9d52e57814f3c9b326dd0ace6979"       #""中填写订阅机场链接
     interval: 86400
     path: ./providers/Subscription-3.yaml
     health-check:
@@ -56,10 +96,7 @@ proxy-groups:
 
   - name: 自动选择
     type: url-test
-    use:
-      - Subscription-1
-      - Subscription-2
-      - Subscription-3
+    include-all: true  
     interval: 600
     tolerance: 50
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
@@ -91,7 +128,21 @@ proxy-groups:
       - 韩国节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
-    
+
+  - name: 油管视频
+    type: select
+    proxies:
+      - 节点选择
+      - 自动选择
+      - 新加坡节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+
   - name: TikTok
     type: select
     proxies:
@@ -133,20 +184,6 @@ proxy-groups:
       - 韩国节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
-    
-  - name: 油管视频
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 新加坡节点
-      - 香港节点
-      - 台湾节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - DIRECT
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 
   - name: GitHub
     type: select
@@ -284,10 +321,7 @@ proxy-groups:
     
   - name: 香港节点
     type: url-test
-    use:
-      - Subscription-1
-      - Subscription-2
-      - Subscription-3
+    include-all: true  
     filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -296,10 +330,7 @@ proxy-groups:
 
   - name: 台湾节点
     type: url-test
-    use:
-      - Subscription-1
-      - Subscription-2
-      - Subscription-3
+    include-all: true  
     filter: "(?i)台|新北|彰化|TW|Taiwan"
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -308,10 +339,7 @@ proxy-groups:
 
   - name: 日本节点
     type: url-test
-    use:
-      - Subscription-1
-      - Subscription-2
-      - Subscription-3
+    include-all: true  
     filter: "(?i)日本|东京|大阪|JP|Japan"
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -320,10 +348,7 @@ proxy-groups:
 
   - name: 美国节点
     type: url-test
-    use:
-      - Subscription-1
-      - Subscription-2
-      - Subscription-3
+    include-all: true  
     filter: "(?i)美|洛杉矶|圣何塞|US|United States"
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -332,10 +357,7 @@ proxy-groups:
 
   - name: 新加坡节点
     type: url-test
-    use:
-      - Subscription-1
-      - Subscription-2
-      - Subscription-3
+    include-all: true  
     filter: "(?i)新加坡|坡|SG|Singapore"
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -344,10 +366,7 @@ proxy-groups:
 
   - name: 韩国节点
     type: url-test
-    use:
-      - Subscription-1
-      - Subscription-2
-      - Subscription-3
+    include-all: true  
     filter: "(?i)KR|Korea|韩|韓"
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -356,10 +375,7 @@ proxy-groups:
 
   - name: 奈飞节点
     type: url-test
-    use:
-      - Subscription-1
-      - Subscription-2
-      - Subscription-3
+    include-all: true  
     filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体"
     url: http://www.gstatic.com/generate_204
     interval: 300
@@ -513,6 +529,7 @@ rule-providers:
 # 第一个Google是规则集名称，第二个Google是策略组名称。
 
 rules:  
+  - "RULE-SET,SteamCN, 全球直连"
   - "RULE-SET,OpenAi, OpenAi"
   - "RULE-SET,YouTube, 油管视频"
   - "RULE-SET,Netflix, 奈飞视频"
@@ -527,8 +544,8 @@ rules:
   - "RULE-SET,OneDrive, OneDrive"
   - "RULE-SET,Google, Google"
   - "RULE-SET,Telegram, 电报消息"
-  - "RULE-SET,SteamCN, 全球直连"
   - "RULE-SET,ChinaIp,全球直连"
   - "RULE-SET,Lan,全球直连"
   - "GEOIP,CN, 全球直连"    # 中国大陆IP直连
   - "MATCH, 漏网之鱼"        # 兜底规则，未匹配流量走“漏网之鱼”组
+  
