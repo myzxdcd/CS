@@ -226,14 +226,6 @@ proxy-groups:
 
 # 远程规则配置，自动更新规则文件（例如广告屏蔽、特殊应用分流等）
 rule-providers:
-  Google:
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list
-    path: ./ruleset/Google.list          # 下载保存到本地路径
-    behavior: classical                  # 经典格式规则
-    interval: 86400                     # 每24小时更新一次
-    format: text                       # 规则文本格式
-    type: http
-
   SteamCN:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/SteamCN/SteamCN.list
     path: ./ruleset/SteamCN.list
@@ -297,6 +289,14 @@ rule-providers:
     interval: 86400
     format: text
     type: http 
+
+  Google:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list
+    path: ./ruleset/Google.list          # 下载保存到本地路径
+    behavior: classical                  # 经典格式规则
+    interval: 86400                     # 每24小时更新一次
+    format: text                       # 规则文本格式
+    type: http
 
   ChinaIp:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/ChinaIPs/ChinaIPs.list
