@@ -37,7 +37,7 @@ external-controller: 127.0.0.1:7890
 dns！:
   enable: false
   # 是否启用 Clash 内置DNS解析功能。启用后Clash负责DNS查询和解析。
-  ipv6: false
+  ipv6: true
   # 是否启用IPv6解析。如果无IPv6环境建议关闭。
   listen: 127.0.0.1:5353
   # DNS监听地址与端口。默认本机监听5353端口。
