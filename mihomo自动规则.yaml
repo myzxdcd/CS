@@ -23,11 +23,11 @@ external-controller: 127.0.0.1:7890  # 外部控制端口，用于GUI软件控�
 # 如果使用其他控制面板，改成对应端口即可
 
 # ---------------------- DNS 配置 ----------------------
-dns:
-  enable: true              # 启用Clash内置DNS解析
+dns!:
+  enable: false              # 启用Clash内置DNS解析
   # 关闭后，使用系统DNS，但可能导致解析污染或规则失效
 
-  ipv6: false               # 是否启用IPv6解析，通常关闭避免问题
+  ipv6: true               # 是否启用IPv6解析，通常关闭避免问题
   # 如果你环境支持IPv6且需要，可以改为true
 
   listen: 127.0.0.1:5353    # DNS服务监听地址及端口
