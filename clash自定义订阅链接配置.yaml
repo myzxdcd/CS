@@ -613,8 +613,8 @@ rules:
   - "RULE-SET,OneDrive, OneDrive"
   - "RULE-SET,Google, Google"
   - "RULE-SET,Telegram, 电报消息"
-  - "RULE-SET,ChinaIp,全球直连"
+  - "RULE-SET,ChinaIp,全球直连, no-resolve"
   - "RULE-SET,Lan,全球直连"
-  - "GEOIP,CN, 全球直连"    # 中国大陆IP直连
+  - "GEOIP,CN, 全球直连, no-resolve"  # 中国大陆IP直连
   - "MATCH, 漏网之鱼"        # 兜底规则，未匹配流量走“漏网之鱼”组
   
