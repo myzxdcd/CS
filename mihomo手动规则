@@ -342,6 +342,10 @@ rules:
   - DOMAIN-SUFFIX,dns.google, 节点选择
   - DOMAIN-SUFFIX,cloudflare-dns.com, 节点选择
   - DOMAIN-SUFFIX,rubyfish.cn, 节点选择
+  - "RULE-SET,Lan,全球直连, no-resolve"
+  - "GEOSITE,cn, 全球直连, no-resolve"
+  - "GEOIP,CN, 全球直连, no-resolve"
+  - "RULE-SET,ChinaIp,全球直连, no-resolve"
   - "RULE-SET,SteamCN, 全球直连"
   - "RULE-SET,Telegram, 电报消息"
   - "RULE-SET,OpenAi, OpenAi"
@@ -351,10 +355,8 @@ rules:
   - "RULE-SET,Google, Google"
   - "RULE-SET,Apple, AppStore"
   - "RULE-SET,HT,特殊使用"
-  - "RULE-SET,ChinaIp,全球直连, no-resolve"
-  - "RULE-SET,Lan,全球直连"
-  - "GEOSITE,cn, 全球直连, no-resolve"
-  - "GEOIP,CN, 全球直连, no-resolve"
+  
+
   - "MATCH, 漏网之鱼"        # 兜底规则，未匹配流量走“漏网之鱼”组
 
 # 规则解释：
