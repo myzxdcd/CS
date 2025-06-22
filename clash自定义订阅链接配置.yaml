@@ -1,46 +1,115 @@
-port: 7890
-socks-port: 7891
+#port: 7890
+# HTTP代理监听端口。客户端需要配置此端口才能使用代理。
+# 如果端口被占用或冲突，可以更改为其他端口，比如1080、8080等。
 
-allow-lan: true
-bind-address: "*"
-mode: rule
-log-level: info
-external-controller: 127.0.0.1:9090
+#socks-port: 7891
+# SOCKS5代理监听端口。
+# 部分应用支持SOCKS代理，配置时填写此端口。
+# 不使用SOCKS代理可以注释或删除。
 
-dns:
-  enable: true
+#allow-lan: true
+# 是否允许局域网设备连接代理。
+# true：允许局域网访问，可用手机等其他设备连接。
+# false：仅本机可用。
+# 开启时请注意局域网安全，避免被恶意访问。
+
+#bind-address: "*"
+# 监听地址，"*"表示所有网卡。
+# 配合allow-lan=true，使局域网设备可访问代理。
+# 若只需本机访问，可设置为 127.0.0.1。
+
+#mode: rule
+# 代理模式。
+# rule：基于规则判断走代理还是直连，常用模式。
+# global：全部流量走代理。
+# direct：全部流量直连，不代理。
+# script：基于脚本自定义代理逻辑。
+
+#log-level: silent
+# 日志等级，影响日志输出详细程度。
+# 可选：silent（不输出日志）、error（错误）、warning（警告）、info（信息，默认）、debug（调试，最详细）。
+
+external-controller: 127.0.0.1:7890
+# Clash 控制接口监听地址及端口。
+# 允许外部程序连接管理Clash。
+# 请确保防火墙允许此端口连接。
+
+dns！:
+  enable: false
+  # 是否启用 Clash 内置DNS解析功能。启用后Clash负责DNS查询和解析。
   ipv6: false
-  listen: 0.0.0.0:53
+  # 是否启用IPv6解析。如果无IPv6环境建议关闭。
+  listen: 127.0.0.1:5353
+  # DNS监听地址与端口。默认本机监听5353端口。
+  # 若想局域网设备使用此DNS，可改为 0.0.0.0:53 等。
   enhanced-mode: fake-ip
+  # DNS增强模式。
+  # 选项：
+  #   fake-ip：使用伪造IP避免DNS污染，兼容大多数情况，推荐使用。
+  #   redir-host：重定向模式，兼容性稍差。
+  #   vanilla：直转系统DNS，最兼容但易受污染。
   fake-ip-filter:
     - '*.lan'
     - '*.local'
     - 'localhost.ptlogin2.qq.com'
     - 'stun.*.*'
+    - 'stun.*'
     - 'dns.msftncsi.com'
     - 'www.msftncsi.com'
     - '*.ntp.org.cn'
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.*.microsoft.com'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.router.asus.com'
+  # fake-ip模式下排除伪造IP的域名列表，避免影响特定服务。
+  # 支持通配符'*'（匹配任意字符串）和'+'（匹配一级子域）。
+
   nameserver:
     - 223.5.5.5
     - 119.29.29.29
+  # 主要DNS服务器，用于解析域名。
+  # 这里使用阿里和腾讯公共DNS，稳定且响应快。
+  # 也可替换为114.114.114.114、8.8.8.8、1.1.1.1等。
+
   fallback:
     - https://1.1.1.1/dns-query
     - https://8.8.8.8/dns-query
     - https://208.67.222.222/dns-query  
     - tls://dns.rubyfish.cn:853
+  # 备用DNS服务器，当主nameserver无法解析时自动使用。
+  # 支持DNS-over-HTTPS（DoH）和DNS-over-TLS（DoT）。
+  # 配置多个提高解析成功率和冗余。
+
   fallback-filter:
     geoip: true
     ipcidr:
       - 240.0.0.0/4
+  # 备用DNS的过滤规则，防止将内网/保留IP使用备用DNS解析。
+  # geoip: true表示基于地理IP信息过滤。
+  # ipcidr用来排除特定IP段。
+
+  fallback-cache: true
+  # 是否缓存备用DNS查询结果，减少请求次数，提升效率。
+
   proxy-server-nameserver:
     - https://1.1.1.1/dns-query
-  default-nameserver:
-    - 114.114.114.114
-    - 8.8.8.8
+  # 当DNS请求经过代理时使用的DNS服务器。
+  # 这里使用Cloudflare的DoH服务器保证隐私和速度。
+
+  # default-nameserver 已禁用，避免污染
+  # default-nameserver:
+  #   - 114.114.114.114
+  #   - 8.8.8.8
+  # Clash默认DNS服务器，通常启用可能导致DNS污染，故注释。
+
   nameserver-policy:
     'geosite:cn':
-      - 119.29.29.29
       - 223.5.5.5
+      - 119.29.29.29
+  # 针对中国国内网站使用国内DNS，提高访问速度和准确率。
+  # 这里利用geosite规则集判断域名。
 
 
 proxy-providers:
