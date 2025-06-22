@@ -143,7 +143,8 @@ proxy-groups:
 
   - name: 特殊使用
     type: select
-    include-all: true         # 包含所有匹配节点
+    include-all: true
+    filter: "(?i)台|新北|彰化|TW|Taiwan"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
 
   - name: 电报消息
