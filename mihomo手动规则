@@ -1,45 +1,85 @@
-dns:
-  enable: true
-  ipv6: false
-  default-nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-    - 114.114.114.114
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  use-hosts: false
-  respect-rules: true
-  proxy-server-nameserver:
-    - https://120.53.53.53/dns-query
-    - https://223.5.5.5/dns-query
-  nameserver:
-    - https://120.53.53.53/dns-query
-    - https://223.5.5.5/dns-query
-  fallback:
-    - 1.1.1.1
-    - 8.8.8.8
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    geosite:
-      - gfw
-    ipcidr:
-      - 240.0.0.0/4
-    domain:
-      - +.google.com
-      - +.facebook.com
-      - +.youtube.com
-  fake-ip-filter:
-    - "*"
-    - +.lan
-    - +.local
-    - time.*.com
-    - ntp.*.com
-    - +.market.xiaomi.com
-  use-system-hosts: false
-  direct-nameserver: []
+# Clash 配置文件示例（带非常详细说明，适合小白理解）
 
-# ------------------- 代理策略组配置 -------------------
+# ---------------------- 代理端口配置 ----------------------
+port: 7890                # HTTP代理端口，浏览器和系统的HTTP代理都用这个端口访问
+# 修改端口，只需改这里，端口冲突改成其他数字即可，比如8080
+
+socks-port: 7891          # SOCKS5代理端口，支持SOCKS协议的程序用这个端口
+# 不使用SOCKS5可以注释或删除此行
+
+allow-lan: true           # 允许局域网设备访问此代理（比如手机、平板通过同一WiFi使用）
+# 如果不想让局域网访问，改为false或删除此行
+
+bind-address: "*"         # 监听所有网络接口地址，方便局域网设备访问
+# 默认*，只监听本机可改为127.0.0.1
+
+mode: rule                # 代理模式，rule表示使用规则分流
+# 还可用global（全局代理）、direct（全直连）
+
+log-level: info           # 日志等级，info是正常信息，可改为warning、error、debug
+# 调试时用debug，平时用info即可
+
+external-controller: 127.0.0.1:7890  # 外部控制端口，用于GUI软件控制
+# 如果使用其他控制面板，改成对应端口即可
+
+# ---------------------- DNS 配置 ----------------------
+dns!:
+  enable: false              # 启用Clash内置DNS解析
+  # 关闭后，使用系统DNS，但可能导致解析污染或规则失效
+
+  ipv6: true               # 是否启用IPv6解析，通常关闭避免问题
+  # 如果你环境支持IPv6且需要，可以改为true
+
+  listen: 127.0.0.1:5353    # DNS服务监听地址及端口
+  # 系统DNS可以设置为127.0.0.1，端口5353也可以改成53或其他端口，但要对应系统设置
+
+  enhanced-mode: fake-ip    # DNS增强模式，fake-ip模式伪装IP，兼容性好
+  # fake-ip - 用假的IP地址返回DNS，适合游戏和绕过DNS污染
+  # redir-host - 不伪装IP，直接重定向，兼容性稍弱
+
+  fake-ip-filter:           # fake-ip模式下不伪装IP的域名列表
+    - '*.lan'               # 本地局域网域名不伪装，确保本地设备通信正常
+    - '*.local'
+    - 'localhost.ptlogin2.qq.com'
+    - 'stun.*.*'
+    - 'stun.*'
+    - 'dns.msftncsi.com'
+    - 'www.msftncsi.com'
+    - '*.ntp.org.cn'
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.*.microsoft.com'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.router.asus.com'
+  # 可根据需要增删此列表，防止误代理本地服务
+
+  nameserver:              # 主要DNS服务器，优先用这些服务器解析
+    - 223.5.5.5            # 阿里DNS，速度快且稳定
+    - 119.29.29.29         # 腾讯DNS
+
+  fallback:                # 回退DNS服务器，主DNS解析失败时使用（支持HTTPS、TLS）
+    - https://1.1.1.1/dns-query         # Cloudflare DOH
+    - https://8.8.8.8/dns-query         # Google DOH
+    - https://208.67.222.222/dns-query  # OpenDNS DOH
+    - tls://dns.rubyfish.cn:853         # Rubyfish DNS DoT协议
+
+  fallback-filter:          # 回退DNS过滤规则
+    geoip: true             # 中国IP不走回退DNS，避免污染
+    ipcidr:
+      - 240.0.0.0/4        # 保留地址段不走回退
+
+  fallback-cache: true      # 开启回退DNS缓存，提升解析速度
+
+  proxy-server-nameserver: # DNS请求走代理时的服务器（非必需）
+    - https://1.1.1.1/dns-query
+
+# 增加DNS服务器：nameserver和fallback列表中增加服务器地址即可。
+# 删除DNS服务器：直接删除对应行。
+# 修改DNS监听端口：修改 listen 字段即可。
+# 若遇解析异常，可以尝试切换 enhanced-mode。
+
+# ---------------------- 代理策略组配置 ----------------------
 
 proxy-groups:
   # 策略组用于将多个节点归为一组，方便分流与选择。
