@@ -34,8 +34,8 @@ external-controller: 127.0.0.1:7890
 # 允许外部程序连接管理Clash。
 # 请确保防火墙允许此端口连接。
 
-dns:
-  enable: true
+dns！:
+  enable: false
   # 是否启用 Clash 内置DNS解析功能。启用后Clash负责DNS查询和解析。
   ipv6: false
   # 是否启用IPv6解析。如果无IPv6环境建议关闭。
