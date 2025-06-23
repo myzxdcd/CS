@@ -576,21 +576,6 @@ rule-providers:
     format: text
     type: http
 
-  ChinaIp:
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/ChinaIPs/ChinaIPs.list
-    path: ./Ruleset/ChinaIPs.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
-
-  Lan:
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Lan/Lan.list
-    path: ./Ruleset/Lan.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
 
 # 规则集配置（rules）
 # 规则通过规则集调用上面远程规则配置对应的策略组，实现自动流量分流。
@@ -613,8 +598,6 @@ rules:
   - "RULE-SET,OneDrive, OneDrive"
   - "RULE-SET,Google, Google"
   - "RULE-SET,Telegram, 电报消息"
-  - "RULE-SET,ChinaIp,全球直连, no-resolve"
-  - "RULE-SET,Lan,全球直连"
   - "GEOIP,CN, 全球直连, no-resolve"  # 中国大陆IP直连
   - "MATCH, 漏网之鱼"        # 兜底规则，未匹配流量走“漏网之鱼”组
   
