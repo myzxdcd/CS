@@ -61,11 +61,6 @@ dns:
     - https://8.8.8.8/dns-query
   # 当 DNS 查询需要通过代理时（如 DNS 分流或规则中走代理），使用的安全 DNS。
 
-  # 默认 nameserver 已禁用，避免因明文 DNS 被污染：
-  # default-nameserver:
-  #   - 114.114.114.114
-  #   - 8.8.8.8
-
   nameserver-policy:
     'geosite:cn':
       - 223.5.5.5
@@ -73,7 +68,9 @@ dns:
   # 对 geosite:cn（中国大陆网站）使用国内 DNS，解析更快更准。
   # geosite 来源于 rule-providers，确保 geosite 数据正确加载。
 
-
+# ======================= 节点提供器配置（proxy-providers） =======================
+# proxy-providers 是 Clash/Mihomo 的一项功能，用于从远程订阅源或本地 YAML 文件动态加载大量代理节点。
+# 与传统直接在配置文件写入所有节点相比，proxy-providers 更加灵活、易维护。
 
 #proxy-providers:   #不使用订阅链接已被注释掉，需要使用直接删除开头的#即可
   # 订阅1：可填写机场订阅链接（建议命名规范统一）
@@ -110,11 +107,21 @@ dns:
       interval: 300
 
 # ======================= 策略组配置（proxy-groups） =======================
-# 策略组用于定义节点的选择逻辑，可用于特定软件或网站走不同线路。
-# icon 可使用 emoji 或图片链接，美化管理界面。
+# 策略组定义了节点的选择方式，适用于自动选择、手动选择、地区分流、网站特定走向等。
+# 支持类型如下：
+# - select：手动选择节点或其他组
+# - url-test：测速后自动选择延迟最低的节点
+# - fallback：故障转移，主节点失败时自动切换
+# - fallback-auto：主节点恢复后自动切回（clash.meta 支持）
+# - load-balance：将请求轮流均匀发送到多个节点
+# - include-all: true → 自动包含所有节点
+# - filter: 正则过滤节点名，配合 include-all 使用
+# - icon: 设置图标，在支持的客户端上美观展示
+
 proxy-groups:
   - name: 首页入口
     type: select
+    # 总控制入口，用于所有流量的统一出站入口
     proxies:
       - 自动选择
       - 香港节点
@@ -130,23 +137,25 @@ proxy-groups:
   - name: 手动切换
     type: select
     include-all: true
+    # 显示所有节点，供用户手动选择。适用于测试或指定某个节点。
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
-    
 
   - name: 自动选择
     type: url-test
-    include-all: true  
-    interval: 600
-    tolerance: 50
+    include-all: true
+    interval: 600  # 单位：秒，每10分钟重新测速一次
+    tolerance: 50  # 延迟容忍值，越低代表选择更“严格”
+    # 自动测试所有节点延迟，选择最快者使用
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
 
   - name: 特殊使用
     type: select
     include-all: true
     filter: "(?i)台|新北|彰化|TW|Taiwan"
+    # 匹配台湾节点，用于解锁特定区域内容
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
   
-  - name: 电报消息
+  - name: Telegram
     type: select
     proxies:
       - 首页入口
@@ -176,7 +185,7 @@ proxy-groups:
       - DIRECT
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
 
-  - name: 油管视频
+  - name: YouTube
     type: select
     proxies:
       - 首页入口
@@ -206,7 +215,7 @@ proxy-groups:
       - DIRECT
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
 
-  - name: 奈飞视频
+  - name: Netflix
     type: select
     proxies:
       - 首页入口
@@ -417,7 +426,7 @@ proxy-groups:
       - 首页入口
       - 自动选择
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
- # 兜底策略，匹配未被其他规则匹配的流量走此组。
+
 
   # 以下为按节点名称自动分类的节点组，方便管理大量节点。
 
@@ -465,59 +474,31 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png
 
   - name: GLOBAL
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
     include-all: true
     type: select
-    proxies:
-      - 首页入口
-      - 手动切换
-      - 自动选择
-      - 电报消息
-      - OpenAi
-      - 油管视频
-      - TikTok
-      - 奈飞视频
-      - Google
-      - 国外媒体
-      - 国内媒体
-      - GitHub
-      - Disney
-      - Twitter
-      - Facebook
-      - Instagram
-      - Spotify
-      - OneDrive
-      - 国外媒体
-      - 国内媒体
-      - 广告拦截
-      - 应用净化
-      - 漏网之鱼
-      - 香港节点
-      - 日本节点
-      - 美国节点
-      - 台湾节点
-      - 新加坡节点
-      - 韩国节点
-      - 奈飞节点
-# 远程规则配置（rule-providers）
-# 这些规则通过远程链接更新，定时下载对应的规则列表文件。
-# behavior: classical 表示经典行为，interval单位秒，86400秒为一天。
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
+
+# ======================= 规则提供器配置（rule-providers） =======================
+# rule-providers 用于引用远程或本地的规则文件，例如 DOMAIN、GEOIP、IP-CIDR 等类型的规则集合。
+# 优点：
+# - 规则文件独立，主配置简洁
+# - 支持自动定时更新，方便维护
+# - 可多平台共享统一规则
+# 使用方式：
+# 在 rules 中通过 RULE-SET 语法调用，比如：
+#   RULE-SET,LocalAreaNetwork,DIRECT
+# 表示匹配 LocalAreaNetwork 规则集的流量使用 DIRECT 策略
 
 rule-providers:
   LocalAreaNetwork:
+    type: http                              # 规则类型，http 表示远程获取
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list
-    path: ./ruleset/LocalAreaNetwork.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
-  UnBan:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/UnBan.list
-    path: ./ruleset/UnBan.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
+    # 规则文件 URL，支持文本格式或 YAML 格式
+    path: ./ruleset/LocalAreaNetwork.list  # 本地缓存文件路径
+    behavior: classical                     # 规则行为类型，classical 支持多类型规则（域名、IP等）
+    interval: 86400                        # 规则更新间隔，单位秒，86400 秒即每天自动更新一次
+    format: text                           # 规则文件格式，text 表示文本规则（而非 yaml 格式）
+
   BanAD:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list
     path: ./ruleset/BanAD.list
@@ -700,18 +681,23 @@ rule-providers:
     format: text
     type: http
 
-# 规则集配置（rules）
-# 规则通过规则集调用上面远程规则配置对应的策略组，实现自动流量分流。
-# 例如：- "RULE-SET,Google, Google"
-# 第一个Google是规则集名称，第二个Google是策略组名称。
-
+# ======================= 规则集配置（rules） =======================
+# 规则用于匹配特定流量，结合上方 rule-providers 里的规则文件，实现自动分流。
+# 规则格式：
+# - RULE-SET,规则集名称,策略组名称
+# 说明：
+# - 第一个名称对应 rule-providers 中定义的规则集名称
+# - 第二个名称对应 proxy-groups 中定义的策略组名称
+#
+# 示例：
+# - RULE-SET,Google, Google
+# 表示请求匹配 Google 规则集的流量走 Google 策略组
 rules:  
   - "RULE-SET,HT,特殊使用"
-  - "GEOIP,CN, 全球直连, no-resolve"  # 中国大陆IP直连
   - "RULE-SET,SteamCN, 全球直连"
   - "RULE-SET,OpenAi, OpenAi"
-  - "RULE-SET,YouTube, 油管视频"
-  - "RULE-SET,Netflix, 奈飞视频"
+  - "RULE-SET,YouTube, YouTube"
+  - "RULE-SET,Netflix, Netflix"
   - "RULE-SET,TikTok, TikTok"
   - "RULE-SET,Apple, AppStore"
   - "RULE-SET,GitHub, GitHub"
@@ -722,7 +708,7 @@ rules:
   - "RULE-SET,Spotify, Spotify"
   - "RULE-SET,OneDrive, OneDrive"
   - "RULE-SET,Google, Google"
-  - "RULE-SET,Telegram, 电报消息"
+  - "RULE-SET,Telegram, Telegram"
   - "RULE-SET,UnBan,全球直连"
   - "RULE-SET,BanAD,广告拦截"
   - "RULE-SET,BanProgramAD,应用净化"
@@ -731,14 +717,60 @@ rules:
   - "RULE-SET,ChinaDomain,全球直连"
   - "RULE-SET,ChinaCompanyIp,全球直连"
   - "RULE-SET,Download,全球直连"
+  - "GEOIP,CN, 全球直连, no-resolve"  # 中国大陆IP直连
   - "MATCH, 漏网之鱼"        # 兜底规则，未匹配流量走“漏网之鱼”组
   
-# 规则解释：
-# - DOMAIN-SUFFIX 表示匹配某个域名后缀。
-# - RULE-SET 调用远程规则文件中的规则。
-# - GEOSITE 根据地理位置域名分组。
-# - GEOIP 根据IP地址归属国家分组。
-# - MATCH 匹配所有剩余流量。
+#------------------- 规则说明 -------------------
+# 1. DOMAIN-KEYWORD
+#    - 匹配包含指定关键字的域名请求。
+#    - 例：DOMAIN-KEYWORD,google 会匹配所有域名中包含 "google" 的请求，如 www.google.com、notgoogle.com。
+#
+# 2. DOMAIN-SUFFIX
+#    - 匹配以指定后缀结尾的域名请求。
+#    - 例：DOMAIN-SUFFIX,google.com 匹配 www.google.com 和 mail.google.com，但不匹配 mygoogle.com。
+#
+# 3. DOMAIN
+#    - 完全匹配指定的完整域名。
+#    - 例：DOMAIN,www.google.com 只匹配 www.google.com，不匹配 mail.google.com。
+#
+# 4. IP-CIDR
+#    - 匹配指定的 IP 地址段流量。
+#    - 例：IP-CIDR,192.168.0.0/16 匹配所有 192.168.x.x 的请求。
+#
+# 5. GEOIP
+#    - 根据目标 IP 的归属国家/地区进行匹配。
+#    - 例：GEOIP,CN 匹配所有归属于中国的 IP 地址。
+#    - 需确保已加载 GEOIP 数据库。
+#
+# 6. GEOSITE
+#    - 根据目标域名所属地理区域匹配。
+#    - 例：GEOSITE,cn 匹配中国大陆相关域名。
+#    - 依赖 GEOSITE 规则库文件。
+#
+# 7. MATCH
+#    - 匹配所有未被之前规则匹配的剩余流量。
+#    - 例：MATCH 通常作为兜底规则，放在规则列表最后。
+#
+# 8. PROCESS-NAME
+#    - 根据发起请求的进程名匹配（部分客户端支持）。
+#    - 例：PROCESS-NAME,chrome.exe 匹配 Chrome 浏览器的请求。
+#
+# 9. SRC-IP-CIDR
+#    - 根据请求来源的 IP 地址段匹配（部分客户端支持）。
+#    - 例：SRC-IP-CIDR,192.168.1.0/24 匹配局域网指定网段来源的请求。
+#
+# 10. USER-AGENT
+#     - 根据 HTTP 请求的 User-Agent 字段匹配（部分客户端支持）。
+#     - 例：USER-AGENT,Firefox 匹配 Firefox 浏览器请求。
+#
+# 注意事项：
+# - 规则顺序重要，匹配到规则即生效，后续规则忽略。
+# - 精准和访问频率高的规则放前面，提升匹配效率。
+# - 使用 MATCH 规则做兜底，保证所有流量都有处理策略。
+# - GEOIP 和 GEOSITE 规则依赖对应的数据库或规则文件，需定期更新。
+# - RULE-SET 可以引用远程规则文件，实现规则集中管理。
+# - 书写规则时请确保格式和缩进正确，符合 YAML 规范。
+
 
 # 规则添加示例：
 # - DOMAIN-SUFFIX,example.com, 自动选择
