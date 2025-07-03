@@ -1,0 +1,772 @@
+dns:
+  enable: true
+  # 启用 Clash 内置 DNS 解析器，确保域名能被正确识别并套用规则。
+
+  ipv6: true
+  # 关闭 IPv6 解析，false关闭，避免未配置环境导致异常连接。
+
+  listen: 127.0.0.1:5353
+  # 本地监听地址与端口，建议使用 127.0.0.1 避免局域网暴露。
+  # 若需局域网其他设备也使用此 DNS，可设为 0.0.0.0:53
+
+  enhanced-mode: fake-ip
+  # 增强模式使用 fake-ip，提高域名识别能力，避免 DNS 污染。
+
+  fake-ip-filter:
+    - '*.lan'
+    - '*.local'
+    - 'localhost.ptlogin2.qq.com'
+    - 'stun.*.*'
+    - 'stun.*'
+    - 'dns.msftncsi.com'
+    - 'www.msftncsi.com'
+    - '*.ntp.org.cn'
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.*.microsoft.com'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.router.asus.com'
+    - '+.apple.com'
+    - 'captive.apple.com'
+  # fake-ip 排除列表，避免某些服务或设备因伪造 IP 无法连接。
+
+  nameserver:
+    - tls://dns.alidns.com:853
+    - tls://doh.pub:853
+  # 默认主 DNS，使用 DoT 协议（DNS over TLS），提高安全性。
+  # alidns 和 doh.pub 是中国地区速度较快、可用率较高的服务。
+
+  fallback:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+    - https://dns.google/dns-query
+    - https://dns.cloudflare.com/dns-query
+  # 当 nameserver 无法解析或解析结果为假 IP 时，使用这些备用服务器。
+  # 支持 DoH（DNS over HTTPS），避免污染，增强稳定性。
+
+  fallback-filter:
+    geoip: true
+    ipcidr:
+      - 240.0.0.0/4
+  # fallback 查询的过滤策略：
+  # geoip: true 表示只对非中国 IP 启用 fallback；
+  # ipcidr 则排除掉保留/内网地址段。
+
+  fallback-cache: true
+  # 缓存 fallback 结果，提高解析速度。
+
+  proxy-server-nameserver:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+  # 当 DNS 查询需要通过代理时（如 DNS 分流或规则中走代理），使用的安全 DNS。
+
+  # 默认 nameserver 已禁用，避免因明文 DNS 被污染：
+  # default-nameserver:
+  #   - 114.114.114.114
+  #   - 8.8.8.8
+
+  nameserver-policy:
+    'geosite:cn':
+      - 223.5.5.5
+      - 119.29.29.29
+  # 对 geosite:cn（中国大陆网站）使用国内 DNS，解析更快更准。
+  # geosite 来源于 rule-providers，确保 geosite 数据正确加载。
+
+
+
+#proxy-providers:   #不使用订阅链接已被注释掉，需要使用直接删除开头的#即可
+  # 订阅1：可填写机场订阅链接（建议命名规范统一）
+  Subscription-1:         # 订阅名称，可自定义
+    type: http
+    url: "填写你的机场订阅链接"       #""中填写订阅机场链接
+    interval: 86400
+    path: ./providers/Subscription-1.yaml
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+
+  # 订阅2：可填写机场订阅链接
+  Subscription-2:         # 订阅名称，可自定义
+    type: http
+    url: "填写你的机场订阅链接"       #""中填写订阅机场链接
+    interval: 86400
+    path: ./providers/Subscription-2.yaml
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+
+  # 订阅3：可填写机场订阅链接
+  Subscription-3:         # 订阅名称，可自定义
+    type: http
+    url: "填写你的机场订阅链接"       #""中填写订阅机场链接
+    interval: 86400
+    path: ./providers/Subscription-3.yaml
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+
+# ======================= 策略组配置（proxy-groups） =======================
+# 策略组用于定义节点的选择逻辑，可用于特定软件或网站走不同线路。
+# icon 可使用 emoji 或图片链接，美化管理界面。
+proxy-groups:
+  - name: 首页入口
+    type: select
+    proxies:
+      - 自动选择
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
+
+  - name: 手动切换
+    type: select
+    include-all: true
+    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
+    
+
+  - name: 自动选择
+    type: url-test
+    include-all: true  
+    interval: 600
+    tolerance: 50
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+
+  - name: 特殊使用
+    type: select
+    include-all: true
+    filter: "(?i)台|新北|彰化|TW|Taiwan"
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+  
+  - name: 电报消息
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 新加坡节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+
+  - name: OpenAi
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 新加坡节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
+
+  - name: 油管视频
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 新加坡节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+
+  - name: TikTok
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 新加坡节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
+
+  - name: 奈飞视频
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 奈飞节点
+      - 新加坡节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
+
+  - name: Google
+    type: select
+    proxies:
+      - 首页入口
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
+
+  - name: GitHub
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub_Letter.png
+
+  - name: Disney
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 奈飞节点
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Disney.png
+
+  - name: Twitter
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
+
+  - name: Facebook
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png
+
+  - name: Instagram
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Instagram.png
+
+  - name: Spotify
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
+
+  - name: OneDrive
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 新加坡节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/OneDrive.png
+
+  - name: 国外媒体
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+  - name: 国内媒体
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
+    type: select
+    proxies:
+      - DIRECT
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 手动切换
+
+  - name: 漏网之鱼
+    type: select
+    proxies:
+      - 首页入口
+      - 自动选择
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
+      - DIRECT
+    icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
+    
+  - name: AppStore
+    type: select
+    proxies:
+      - DIRECT
+      - 首页入口
+      - 美国节点
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 韩国节点
+      - 手动切换
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
+
+  - name: 广告拦截
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+  - name: 应用净化
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+
+  - name: 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 手动切换
+      - 首页入口
+      - 自动选择
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+ # 兜底策略，匹配未被其他规则匹配的流量走此组。
+
+  # 以下为按节点名称自动分类的节点组，方便管理大量节点。
+
+  - name: 香港节点
+    type: select
+    include-all: true
+    filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
+  # filter支持正则表达式匹配节点名称，(?i)忽略大小写。
+
+  - name: 台湾节点
+    type: select
+    include-all: true
+    filter: "(?i)台|新北|彰化|TW|Taiwan"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
+
+  - name: 日本节点
+    type: select
+    include-all: true
+    filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
+
+  - name: 美国节点
+    type: select
+    include-all: true
+    filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
+
+  - name: 新加坡节点
+    type: select
+    include-all: true
+    filter: "(?i)新加坡|坡|狮城|SG|Singapore"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
+
+  - name: 韩国节点
+    type: select
+    include-all: true
+    filter: "(?i)KR|Korea|KOR|首尔|韩|韓"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png
+
+  - name: 奈飞节点
+    type: select
+    include-all: true
+    filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png
+
+  - name: GLOBAL
+    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
+    include-all: true
+    type: select
+    proxies:
+      - 首页入口
+      - 手动切换
+      - 自动选择
+      - 电报消息
+      - OpenAi
+      - 油管视频
+      - TikTok
+      - 奈飞视频
+      - Google
+      - 国外媒体
+      - 国内媒体
+      - GitHub
+      - Disney
+      - Twitter
+      - Facebook
+      - Instagram
+      - Spotify
+      - OneDrive
+      - 国外媒体
+      - 国内媒体
+      - 广告拦截
+      - 应用净化
+      - 漏网之鱼
+      - 香港节点
+      - 日本节点
+      - 美国节点
+      - 台湾节点
+      - 新加坡节点
+      - 韩国节点
+      - 奈飞节点
+# 远程规则配置（rule-providers）
+# 这些规则通过远程链接更新，定时下载对应的规则列表文件。
+# behavior: classical 表示经典行为，interval单位秒，86400秒为一天。
+
+rule-providers:
+  LocalAreaNetwork:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list
+    path: ./ruleset/LocalAreaNetwork.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  UnBan:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/UnBan.list
+    path: ./ruleset/UnBan.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BanAD:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list
+    path: ./ruleset/BanAD.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BanProgramAD:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list
+    path: ./ruleset/BanProgramAD.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Google:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list
+    path: ./ruleset/Google.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  SteamCN:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/SteamCN/SteamCN.list
+    path: ./ruleset/SteamCN.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Apple:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Apple/Apple.list
+    path: ./ruleset/Apple.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Telegram:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram.list
+    path: ./ruleset/Telegram.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  OpenAi:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/OpenAI/OpenAI.list
+    path: ./ruleset/OpenAi.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  
+  GitHub:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/GitHub/GitHub.list
+    path: ./ruleset/GitHub.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Disney:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Disney/Disney.list
+    path: ./ruleset/Disney.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Twitter:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Twitter/Twitter.list
+    path: ./ruleset/Twitter.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Facebook:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Facebook/Facebook.list
+    path: ./ruleset/Facebook.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Instagram:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Instagram/Instagram.list
+    path: ./ruleset/Instagram.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Spotify:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Spotify/Spotify.list
+    path: ./ruleset/Spotify.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  OneDrive:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/OneDrive/OneDrive.list
+    path: ./ruleset/OneDrive.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  YouTube:
+    url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/YouTube.yaml
+    path: ./ruleset/YouTube.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  Netflix:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Netflix/Netflix.list
+    path: ./ruleset/Netflix.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  TikTok:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list
+    path: ./Ruleset/TikTok.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  ChinaMedia:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list
+    path: ./ruleset/ChinaMedia.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  
+  ProxyMedia:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyMedia.list
+    path: ./ruleset/ProxyMedia.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  ChinaDomain:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list
+    path: ./ruleset/ChinaDomain.list
+    behavior: domain
+    interval: 86400
+    format: text
+    type: http
+
+  ChinaCompanyIp:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaCompanyIp.list
+    path: ./ruleset/ChinaCompanyIp.list
+    behavior: ipcidr
+    interval: 86400
+    format: text
+    type: http
+
+  Download:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Download.list
+    path: ./ruleset/Download.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+  HT:
+    url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/HT
+    path: ./Ruleset/HT
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
+# 规则集配置（rules）
+# 规则通过规则集调用上面远程规则配置对应的策略组，实现自动流量分流。
+# 例如：- "RULE-SET,Google, Google"
+# 第一个Google是规则集名称，第二个Google是策略组名称。
+
+rules:  
+  - "RULE-SET,HT,特殊使用"
+  - "GEOIP,CN, 全球直连, no-resolve"  # 中国大陆IP直连
+  - "RULE-SET,SteamCN, 全球直连"
+  - "RULE-SET,OpenAi, OpenAi"
+  - "RULE-SET,YouTube, 油管视频"
+  - "RULE-SET,Netflix, 奈飞视频"
+  - "RULE-SET,TikTok, TikTok"
+  - "RULE-SET,Apple, AppStore"
+  - "RULE-SET,GitHub, GitHub"
+  - "RULE-SET,Disney, Disney"
+  - "RULE-SET,Twitter, Twitter"
+  - "RULE-SET,Facebook, Facebook"
+  - "RULE-SET,Instagram, Instagram"
+  - "RULE-SET,Spotify, Spotify"
+  - "RULE-SET,OneDrive, OneDrive"
+  - "RULE-SET,Google, Google"
+  - "RULE-SET,Telegram, 电报消息"
+  - "RULE-SET,UnBan,全球直连"
+  - "RULE-SET,BanAD,广告拦截"
+  - "RULE-SET,BanProgramAD,应用净化"
+  - "RULE-SET,ChinaMedia,国内媒体"
+  - "RULE-SET,ProxyMedia,国外媒体"
+  - "RULE-SET,ChinaDomain,全球直连"
+  - "RULE-SET,ChinaCompanyIp,全球直连"
+  - "RULE-SET,Download,全球直连"
+  - "MATCH, 漏网之鱼"        # 兜底规则，未匹配流量走“漏网之鱼”组
+  
+# 规则解释：
+# - DOMAIN-SUFFIX 表示匹配某个域名后缀。
+# - RULE-SET 调用远程规则文件中的规则。
+# - GEOSITE 根据地理位置域名分组。
+# - GEOIP 根据IP地址归属国家分组。
+# - MATCH 匹配所有剩余流量。
+
+# 规则添加示例：
+# - DOMAIN-SUFFIX,example.com, 自动选择
+# - DOMAIN-KEYWORD,facebook, 首页入口
+# - IP-CIDR,8.8.8.8/32, DIRECT
+
+# 规则顺序重要，越靠前优先级越高。
+
+# ------------------- 流量嗅探配置 -------------------
+
+sniffer:
+  enable: true
+  parse-pure-ip: true
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080, 8000, 8880]
+
+# 流量嗅探允许Clash自动识别HTTP和TLS流量，
+# 通过监听指定端口来准确区分应用流量，提高规则匹配精准度。
+# 适合需要针对特定App流量做精准分流的用户。
+
+# ------------------- profile 配置 -------------------
+
+#profile:
+  store-selected: true
+  # 是否保存用户上次选择的节点，下次启动自动选中。
+  store-fake-ip: true
+  # 是否保存fake-ip模式开关状态。
+
