@@ -498,7 +498,14 @@ rule-providers:
     behavior: classical                     # 规则行为类型，classical 支持多类型规则（域名、IP等）
     interval: 86400                        # 规则更新间隔，单位秒，86400 秒即每天自动更新一次
     format: text                           # 规则文件格式，text 表示文本规则（而非 yaml 格式）
-
+  UnBan:
+    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/UnBan.list
+    path: ./ruleset/UnBan.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+    
   BanAD:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list
     path: ./ruleset/BanAD.list
@@ -506,6 +513,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+    
   BanProgramAD:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list
     path: ./ruleset/BanProgramAD.list
@@ -513,6 +521,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+    
   Google:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list
     path: ./ruleset/Google.list
