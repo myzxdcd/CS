@@ -1,17 +1,17 @@
 dns:
   enable: true
-  # 是否启用 Clash 内置DNS解析功能。启用后Clash负责DNS查询和解析。
-  ipv6: false
-  # 是否启用IPv6解析。如果无IPv6环境建议关闭。
+  # 启用 Clash 内置 DNS 解析器，确保域名能被正确识别并套用规则。
+
+  ipv6: true
+  # 关闭 IPv6 解析，false关闭，避免未配置环境导致异常连接。
+
   listen: 127.0.0.1:5353
-  # DNS监听地址与端口。默认本机监听5353端口。
-  # 若想局域网设备使用此DNS，可改为 0.0.0.0:53 等。
+  # 本地监听地址与端口，建议使用 127.0.0.1 避免局域网暴露。
+  # 若需局域网其他设备也使用此 DNS，可设为 0.0.0.0:53
+
   enhanced-mode: fake-ip
-  # DNS增强模式。
-  # 选项：
-  #   fake-ip：使用伪造IP避免DNS污染，兼容大多数情况，推荐使用。
-  #   redir-host：重定向模式，兼容性稍差。
-  #   vanilla：直转系统DNS，最兼容但易受污染。
+  # 增强模式使用 fake-ip，提高域名识别能力，避免 DNS 污染。
+
   fake-ip-filter:
     - '*.lan'
     - '*.local'
@@ -27,53 +27,52 @@ dns:
     - '+.msftconnecttest.com'
     - '+.msftncsi.com'
     - '+.router.asus.com'
-  # fake-ip模式下排除伪造IP的域名列表，避免影响特定服务。
-  # 支持通配符'*'（匹配任意字符串）和'+'（匹配一级子域）。
+    - '+.apple.com'
+    - 'captive.apple.com'
+  # fake-ip 排除列表，避免某些服务或设备因伪造 IP 无法连接。
 
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-  # 主要DNS服务器，用于解析域名。
-  # 这里使用阿里和腾讯公共DNS，稳定且响应快。
-  # 也可替换为114.114.114.114、8.8.8.8、1.1.1.1等。
+    - tls://dns.alidns.com:853
+    - tls://doh.pub:853
+  # 默认主 DNS，使用 DoT 协议（DNS over TLS），提高安全性。
+  # alidns 和 doh.pub 是中国地区速度较快、可用率较高的服务。
 
   fallback:
-    - https://1.1.1.1/dns-query
-    - https://8.8.8.8/dns-query
-    - https://208.67.222.222/dns-query  
-    - tls://dns.rubyfish.cn:853
-  # 备用DNS服务器，当主nameserver无法解析时自动使用。
-  # 支持DNS-over-HTTPS（DoH）和DNS-over-TLS（DoT）。
-  # 配置多个提高解析成功率和冗余。
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+    - https://dns.google/dns-query
+    - https://dns.cloudflare.com/dns-query
+  # 当 nameserver 无法解析或解析结果为假 IP 时，使用这些备用服务器。
+  # 支持 DoH（DNS over HTTPS），避免污染，增强稳定性。
 
   fallback-filter:
     geoip: true
     ipcidr:
       - 240.0.0.0/4
-  # 备用DNS的过滤规则，防止将内网/保留IP使用备用DNS解析。
-  # geoip: true表示基于地理IP信息过滤。
-  # ipcidr用来排除特定IP段。
+  # fallback 查询的过滤策略：
+  # geoip: true 表示只对非中国 IP 启用 fallback；
+  # ipcidr 则排除掉保留/内网地址段。
 
   fallback-cache: true
-  # 是否缓存备用DNS查询结果，减少请求次数，提升效率。
+  # 缓存 fallback 结果，提高解析速度。
 
   proxy-server-nameserver:
     - https://1.1.1.1/dns-query
-  # 当DNS请求经过代理时使用的DNS服务器。
-  # 这里使用Cloudflare的DoH服务器保证隐私和速度。
+    - https://8.8.8.8/dns-query
+  # 当 DNS 查询需要通过代理时（如 DNS 分流或规则中走代理），使用的安全 DNS。
 
-  # default-nameserver 已禁用，避免污染
+  # 默认 nameserver 已禁用，避免因明文 DNS 被污染：
   # default-nameserver:
   #   - 114.114.114.114
   #   - 8.8.8.8
-  # Clash默认DNS服务器，通常启用可能导致DNS污染，故注释。
 
   nameserver-policy:
     'geosite:cn':
       - 223.5.5.5
       - 119.29.29.29
-  # 针对中国国内网站使用国内DNS，提高访问速度和准确率。
-  # 这里利用geosite规则集判断域名。
+  # 对 geosite:cn（中国大陆网站）使用国内 DNS，解析更快更准。
+  # geosite 来源于 rule-providers，确保 geosite 数据正确加载。
+
 
 # ---------------------- 代理策略组配置 ----------------------
 
