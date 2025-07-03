@@ -131,19 +131,22 @@ proxy-groups:
       - 美国节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
 
   - name: 手动切换
     type: select
     include-all: true
+    filter: "(?i)^(?!.*(异常|剩余|流量|距离|官网|刷新|cn|com|套餐)).*$"
     # 显示所有节点，供用户手动选择。适用于测试或指定某个节点。
     icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
 
   - name: 自动选择
     type: url-test
+    filter: "(?i)^(?!.*(异常|剩余|流量|距离|官网|刷新|cn|com|套餐)).*$"
     include-all: true
-    interval: 600  # 单位：秒，每10分钟重新测速一次
+    interval: 86400  # 单位：秒，每10分钟重新测速一次
     tolerance: 50  # 延迟容忍值，越低代表选择更“严格”
     # 自动测试所有节点延迟，选择最快者使用
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
@@ -167,6 +170,7 @@ proxy-groups:
       - 美国节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
 
@@ -182,6 +186,7 @@ proxy-groups:
       - 美国节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
 
@@ -197,6 +202,7 @@ proxy-groups:
       - 美国节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 
@@ -212,6 +218,7 @@ proxy-groups:
       - 美国节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
 
@@ -228,6 +235,7 @@ proxy-groups:
       - 美国节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
 
@@ -242,6 +250,7 @@ proxy-groups:
       - 日本节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
 
@@ -257,6 +266,7 @@ proxy-groups:
       - 新加坡节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub_Letter.png
 
@@ -273,6 +283,7 @@ proxy-groups:
       - 新加坡节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Disney.png
 
@@ -288,6 +299,7 @@ proxy-groups:
       - 新加坡节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
 
@@ -303,6 +315,7 @@ proxy-groups:
       - 新加坡节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png
 
@@ -318,6 +331,7 @@ proxy-groups:
       - 新加坡节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Instagram.png
 
@@ -333,6 +347,7 @@ proxy-groups:
       - 新加坡节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
 
@@ -348,6 +363,7 @@ proxy-groups:
       - 新加坡节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/OneDrive.png
 
@@ -364,6 +380,7 @@ proxy-groups:
       - 美国节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
   - name: 国内媒体
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
@@ -375,6 +392,7 @@ proxy-groups:
       - 新加坡节点
       - 日本节点
       - 手动切换
+      - 备用节点
 
   - name: 漏网之鱼
     type: select
@@ -388,6 +406,7 @@ proxy-groups:
       - 美国节点
       - 韩国节点
       - 手动切换
+      - 备用节点
       - DIRECT
     icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
     
@@ -403,6 +422,7 @@ proxy-groups:
       - 日本节点
       - 韩国节点
       - 手动切换
+      - 备用节点
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
 
   - name: 广告拦截
@@ -472,10 +492,18 @@ proxy-groups:
     include-all: true
     filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png
+  
+  - name: 备用节点
+    type: select
+    include-all: true
+    filter: "(?i)^(?!.*(港|HK|Hong Kong|HongKong|hongkong|台|新北|彰化|TW|Taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|新加坡|坡|狮城|SG|Singapore|KR|Korea|KOR|首尔|韩|韓|NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体|异常|剩余|流量|距离|官网|刷新|cn|com|套餐)).*$"
+
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Server.png
 
   - name: GLOBAL
     include-all: true
     type: select
+    filter: "(?i)^(?!.*(港|HK|Hong Kong|HongKong|hongkong|台|新北|彰化|TW|Taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|新加坡|坡|狮城|SG|Singapore|KR|Korea|KOR|首尔|韩|韓|NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体|异常|剩余|流量|距离|官网|刷新|cn|com|套餐)).*$"
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
 
 # ======================= 规则提供器配置（rule-providers） =======================
