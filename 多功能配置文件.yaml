@@ -555,7 +555,7 @@ proxy-groups:
     include-all: true
     filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
-    strategy: round-robin
+    strategy: latency
     health-check:
     enable: true
     url: https://www.gstatic.com/generate_204
@@ -567,7 +567,7 @@ proxy-groups:
     include-all: true
     filter: "(?i)台|新北|彰化|TW|Taiwan"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
-    strategy: round-robin
+    strategy: latency
     health-check:
     enable: true
     url: https://www.gstatic.com/generate_204
@@ -579,7 +579,7 @@ proxy-groups:
     include-all: true
     filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
-    strategy: round-robin
+    strategy: latency
     health-check:
     enable: true
     url: https://www.gstatic.com/generate_204
@@ -591,7 +591,7 @@ proxy-groups:
     include-all: true
     filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
-    strategy: round-robin
+    strategy: latency
     health-check:
     enable: true
     url: https://www.gstatic.com/generate_204
@@ -603,7 +603,7 @@ proxy-groups:
     include-all: true
     filter: "(?i)新加坡|坡|狮城|SG|Singapore"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
-    strategy: round-robin
+    strategy: latency
     health-check:
     enable: true
     url: https://www.gstatic.com/generate_204
@@ -615,7 +615,7 @@ proxy-groups:
     include-all: true
     filter: "(?i)KR|Korea|KOR|首尔|韩|韓"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png
-    strategy: round-robin
+    strategy: latency
     health-check:
     enable: true
     url: https://www.gstatic.com/generate_204
@@ -627,7 +627,7 @@ proxy-groups:
     include-all: true
     filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png
-    strategy: round-robin
+    strategy: latency
     health-check:
     enable: true
     url: https://www.gstatic.com/generate_204
@@ -639,7 +639,7 @@ proxy-groups:
     include-all: true
     filter: "(?i)^(?!.*(港|HK|Hong Kong|HongKong|hongkong|台|新北|彰化|TW|Taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|新加坡|坡|狮城|SG|Singapore|KR|Korea|KOR|首尔|韩|韓|NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体|异常|剩余|流量|距离|官网|刷新|cn|com|套餐)).*$"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Server.png
-    strategy: round-robin
+    strategy: latency
     health-check:
     enable: true
     url: https://www.gstatic.com/generate_204
@@ -648,45 +648,97 @@ proxy-groups:
 
   - name: 香港负载均衡
     type: load-balance
+    # 策略组类型，load-balance 表示将请求在组内多个节点间分配，实现负载均衡。
+    
     include-all: true
+    # 自动包含所有来自 proxy-providers 的代理节点（满足 filter 条件者）
+    
     filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
+    # 使用正则表达式过滤符合“香港”相关关键词的节点，(?i) 表示不区分大小写。
+    
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
-    strategy: round-robin
+    # Clash UI 中显示的图标 URL，可自定义
+    
+    strategy: consistent-hashing
+    # 负载均衡策略：
+    # - consistent-hashing（推荐）：对相同的域名请求始终使用同一个节点，提升缓存命中率、连接稳定性。
+    # - round-robin：平均分配请求到每个可用节点。
+    # - sticky-sessions：粘性会话，保持用户会话一致性（多数情况不推荐）。
+    
+    health-check:
+      enable: true
+      # 开启健康检查，确保不可用节点不参与负载均衡分配。
+      
+      interval: 300
+      # 健康检查的时间间隔（秒），此处为每 5 分钟检测一次。
+      
+      lazy: true
+      # 懒加载检查，只有在节点被选中时才执行健康检查，减少不必要的网络开销。
+      # 若希望启动时就检测所有节点，请改为 false。
+      
+      url: http://cp.cloudflare.com/generate_204
+      # 用于健康检查的测试地址，该地址返回 204 空响应，适合快速判断节点连通性。
 
   - name: 台湾负载均衡
     type: load-balance
     include-all: true
     filter: "(?i)台|新北|彰化|TW|Taiwan"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
-    strategy: round-robin
+    strategy: consistent-hashing
+    health-check:
+      enable: true
+      interval: 300
+      lazy: true
+      url: http://cp.cloudflare.com/generate_204
 
   - name: 日本负载均衡
     type: load-balance
     include-all: true
     filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
-    strategy: round-robin
+    strategy: consistent-hashing
+    health-check:
+      enable: true
+      interval: 300
+      lazy: true
+      url: http://cp.cloudflare.com/generate_204
 
   - name: 美国负载均衡
     type: load-balance
     include-all: true
     filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
-    strategy: round-robin
+    strategy: consistent-hashing
+    health-check:
+      enable: true
+      interval: 300
+      lazy: true
+      url: http://cp.cloudflare.com/generate_204
 
   - name: 新加坡负载均衡
     type: load-balance
     include-all: true
     filter: "(?i)新加坡|坡|狮城|SG|Singapore"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
-    strategy: round-robin
+    strategy: consistent-hashing
+    health-check:
+      enable: true
+      interval: 300
+      lazy: true
+      url: http://cp.cloudflare.com/generate_204
 
   - name: 韩国负载均衡
     type: load-balance
     include-all: true
     filter: "(?i)KR|Korea|KOR|首尔|韩|韓"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png
-    strategy: round-robin
+    strategy: consistent-hashing
+    health-check:
+      enable: true
+      interval: 300
+      lazy: true
+      url: http://cp.cloudflare.com/generate_204
+
 
   - name: GLOBAL
     include-all: true
@@ -877,7 +929,7 @@ rule-providers:
   ChinaDomain:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Loon/China/China_Domain.list
     path: ./ruleset/ChinaDomain.list
-    behavior: domain
+    behavior: classical
     interval: 86400
     format: text
     type: http
@@ -900,7 +952,7 @@ rule-providers:
 
   HT:
     url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/HT
-    path: ./Ruleset/HT
+    path: ./ruleset/HT.list
     behavior: classical
     interval: 86400
     format: text
