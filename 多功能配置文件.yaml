@@ -132,6 +132,12 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
 
@@ -163,14 +169,20 @@ proxy-groups:
     proxies:
       - 首页入口
       - 自动选择
-      - 新加坡节点
       - 香港节点
       - 台湾节点
+      - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
 
@@ -179,14 +191,20 @@ proxy-groups:
     proxies:
       - 首页入口
       - 自动选择
-      - 新加坡节点
       - 香港节点
       - 台湾节点
+      - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
 
@@ -195,14 +213,20 @@ proxy-groups:
     proxies:
       - 首页入口
       - 自动选择
-      - 新加坡节点
       - 香港节点
       - 台湾节点
+      - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 
@@ -211,14 +235,20 @@ proxy-groups:
     proxies:
       - 首页入口
       - 自动选择
-      - 新加坡节点
       - 香港节点
       - 台湾节点
+      - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
 
@@ -227,15 +257,20 @@ proxy-groups:
     proxies:
       - 首页入口
       - 自动选择
-      - 奈飞节点
-      - 新加坡节点
       - 香港节点
       - 台湾节点
+      - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
 
@@ -243,14 +278,21 @@ proxy-groups:
     type: select
     proxies:
       - 首页入口
-      - 美国节点
+      - 自动选择
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
+      - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
 
@@ -259,14 +301,20 @@ proxy-groups:
     proxies:
       - 首页入口
       - 自动选择
-      - 美国节点
       - 香港节点
       - 台湾节点
-      - 日本节点
       - 新加坡节点
+      - 日本节点
+      - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub_Letter.png
 
@@ -275,15 +323,20 @@ proxy-groups:
     proxies:
       - 首页入口
       - 自动选择
-      - 奈飞节点
-      - 美国节点
       - 香港节点
       - 台湾节点
-      - 日本节点
       - 新加坡节点
+      - 日本节点
+      - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Disney.png
 
@@ -292,14 +345,20 @@ proxy-groups:
     proxies:
       - 首页入口
       - 自动选择
-      - 美国节点
       - 香港节点
       - 台湾节点
-      - 日本节点
       - 新加坡节点
+      - 日本节点
+      - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
 
@@ -308,14 +367,20 @@ proxy-groups:
     proxies:
       - 首页入口
       - 自动选择
-      - 美国节点
       - 香港节点
       - 台湾节点
-      - 日本节点
       - 新加坡节点
+      - 日本节点
+      - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png
 
@@ -324,14 +389,20 @@ proxy-groups:
     proxies:
       - 首页入口
       - 自动选择
-      - 美国节点
       - 香港节点
       - 台湾节点
-      - 日本节点
       - 新加坡节点
+      - 日本节点
+      - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Instagram.png
 
@@ -340,14 +411,20 @@ proxy-groups:
     proxies:
       - 首页入口
       - 自动选择
-      - 美国节点
       - 香港节点
       - 台湾节点
-      - 日本节点
       - 新加坡节点
+      - 日本节点
+      - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
 
@@ -356,14 +433,20 @@ proxy-groups:
     proxies:
       - 首页入口
       - 自动选择
-      - 美国节点
       - 香港节点
       - 台湾节点
-      - 日本节点
       - 新加坡节点
+      - 日本节点
+      - 美国节点
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/OneDrive.png
 
@@ -380,6 +463,12 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
 
@@ -389,7 +478,10 @@ proxy-groups:
       - DIRECT
       - 香港节点
       - 台湾节点
+      - 日本节点
+      - 美国节点
       - 新加坡节点
+      - 韩国节点
       - 日本节点
       - 手动切换
       - 备用节点
@@ -408,6 +500,12 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
+      - 香港负载均衡
+      - 台湾负载均衡
+      - 日本负载均衡
+      - 美国负载均衡
+      - 新加坡负载均衡
+      - 韩国负载均衡
       - DIRECT
     icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
     
@@ -453,53 +551,142 @@ proxy-groups:
   # 以下为按节点名称自动分类的节点组，方便管理大量节点。
 
   - name: 香港节点
-    type: select
+    type: fallback
     include-all: true
     filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
-  # filter支持正则表达式匹配节点名称，(?i)忽略大小写。
+    strategy: round-robin
+    health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    retries: 3
 
   - name: 台湾节点
-    type: select
+    type: fallback
     include-all: true
     filter: "(?i)台|新北|彰化|TW|Taiwan"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
+    strategy: round-robin
+    health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    retries: 3
 
   - name: 日本节点
-    type: select
+    type: fallback
     include-all: true
     filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
+    strategy: round-robin
+    health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    retries: 3
 
   - name: 美国节点
-    type: select
+    type: fallback
     include-all: true
     filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
+    strategy: round-robin
+    health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    retries: 3
 
   - name: 新加坡节点
-    type: select
+    type: fallback
     include-all: true
     filter: "(?i)新加坡|坡|狮城|SG|Singapore"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
+    strategy: round-robin
+    health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    retries: 3
 
   - name: 韩国节点
-    type: select
+    type: fallback
     include-all: true
     filter: "(?i)KR|Korea|KOR|首尔|韩|韓"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png
+    strategy: round-robin
+    health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    retries: 3
 
   - name: 奈飞节点
-    type: select
+    type: fallback
     include-all: true
     filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png
-  
+    strategy: round-robin
+    health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    retries: 3
+
   - name: 备用节点
-    type: select
+    type: fallback
     include-all: true
     filter: "(?i)^(?!.*(港|HK|Hong Kong|HongKong|hongkong|台|新北|彰化|TW|Taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|新加坡|坡|狮城|SG|Singapore|KR|Korea|KOR|首尔|韩|韓|NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体|异常|剩余|流量|距离|官网|刷新|cn|com|套餐)).*$"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Server.png
+    strategy: round-robin
+    health-check:
+    enable: true
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    retries: 3
+
+  - name: 香港负载均衡
+    type: load-balance
+    include-all: true
+    filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
+    strategy: round-robin
+
+  - name: 台湾负载均衡
+    type: load-balance
+    include-all: true
+    filter: "(?i)台|新北|彰化|TW|Taiwan"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
+    strategy: round-robin
+
+  - name: 日本负载均衡
+    type: load-balance
+    include-all: true
+    filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
+    strategy: round-robin
+
+  - name: 美国负载均衡
+    type: load-balance
+    include-all: true
+    filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
+    strategy: round-robin
+
+  - name: 新加坡负载均衡
+    type: load-balance
+    include-all: true
+    filter: "(?i)新加坡|坡|狮城|SG|Singapore"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
+    strategy: round-robin
+
+  - name: 韩国负载均衡
+    type: load-balance
+    include-all: true
+    filter: "(?i)KR|Korea|KOR|首尔|韩|韓"
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png
+    strategy: round-robin
 
   - name: GLOBAL
     include-all: true
