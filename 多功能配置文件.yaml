@@ -124,6 +124,7 @@ proxy-groups:
     # 总控制入口，用于所有流量的统一出站入口
     proxies:
       - 自动选择
+      - 链式代理
       - 香港节点
       - 台湾节点
       - 新加坡节点
@@ -140,6 +141,32 @@ proxy-groups:
       - 韩国负载均衡
       - DIRECT
     icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
+  
+  - name: 链式代理
+    type: relay
+    proxies:
+      - 代理入口
+      - 代理出口
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
+
+  - name: 代理入口
+    type: select
+    proxies:
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+      - 韩国节点
+      - 手动切换
+      - 备用节点
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
+
+  - name: 代理出口
+    type: select
+    include-all: true
+    filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
 
   - name: 手动切换
     type: select
