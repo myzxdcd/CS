@@ -23,7 +23,7 @@ external-controller: 127.0.0.1:7890  # 外部控制端口，用于GUI软件控�
 # 如果使用其他控制面板，改成对应端口即可
 
 # ---------------------- DNS 配置 ----------------------
-dns!:
+dns:
   enable: false              # 启用Clash内置DNS解析
   # 关闭后，使用系统DNS，但可能导致解析污染或规则失效
 
@@ -109,11 +109,6 @@ proxy-groups:
     interval: 86400             # 测速间隔，秒为单位，86400秒 = 24小时
     tolerance: 50               # 容忍延迟，单位毫秒，超过50ms的节点不选
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
-
-  - name: 特殊使用               # 特殊用途分组，方便自定义规则调用
-    include-all: true
-    type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
 
   # 以下是针对特定应用的策略组，方便规则调用
   - name: 电报消息
@@ -362,13 +357,6 @@ rule-providers:
     format: text
     type: http
 
-  HT:
-    url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/HT
-    path: ./Ruleset/HT
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http 
 
   Google:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list
@@ -409,7 +397,6 @@ rules:
   - "RULE-SET,TikTok, TikTok"
   - "RULE-SET,Google, Google"
   - "RULE-SET,Apple, AppStore"
-  - "RULE-SET,HT, 特殊使用"
   - "GEOIP,CN, 全球直连, no-resolve"             # GeoIP定位中国IP走直连，减少延迟和负担
   - "MATCH, 漏网之鱼"                # 默认策略，所有未匹配流量走漏网之鱼策略组，防止漏包
 
