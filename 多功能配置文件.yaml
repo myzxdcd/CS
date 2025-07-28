@@ -862,6 +862,7 @@ rule-providers:
 # - RULE-SET,Google, Google
 # 表示请求匹配 Google 规则集的流量走 Google 策略组
 rules:  
+  - DOMAIN-SUFFIX,vilink.cc,香港节点
   - "RULE-SET,HT,特殊使用"
   - "RULE-SET,SteamCN, 全球直连"
   - "RULE-SET,OpenAi, OpenAi"
