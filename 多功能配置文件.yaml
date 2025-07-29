@@ -52,8 +52,7 @@ proxy-groups:
   - name: 特殊使用
     type: select
     include-all: true
-    filter: "(?i)台|新北|彰化|TW|Taiwan"
-    # 匹配台湾节点，用于解锁特定区域内容
+    filter: "(?i)^(?!.*(异常|剩余|流量|距离|官网|刷新|cn|com|套餐)).*$"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
   
   - name: Telegram
