@@ -17,7 +17,7 @@ proxy-providers:   #不使用订阅链接已被注释掉，需要使用直接删
   # 订阅2：可填写机场订阅链接
   Subscription-2:         # 订阅名称，可自定义
     type: http
-    url: "填写你的机场订阅链接"       #""中填写订阅机场链接
+    url: "填写你的机场订阅"       #""中填写订阅机场链接
     interval: 86400
     path: ./providers/Subscription-2.yaml
     health-check:
@@ -61,12 +61,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
 
@@ -105,12 +99,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
 
@@ -127,12 +115,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
 
@@ -149,12 +131,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
 
@@ -171,12 +147,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
 
@@ -193,12 +163,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
 
@@ -215,12 +179,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
 
@@ -237,12 +195,7 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
+
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub_Letter.png
 
@@ -259,12 +212,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Disney.png
 
@@ -281,12 +228,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
 
@@ -303,12 +244,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png
 
@@ -325,12 +260,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Instagram.png
 
@@ -347,12 +276,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
 
@@ -369,12 +292,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/OneDrive.png
 
@@ -391,12 +308,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
 
@@ -428,12 +339,6 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - 备用节点
-      - 香港负载均衡
-      - 台湾负载均衡
-      - 日本负载均衡
-      - 美国负载均衡
-      - 新加坡负载均衡
-      - 韩国负载均衡
       - DIRECT
     icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
     
@@ -573,100 +478,6 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     retries: 3
-
-  - name: 香港负载均衡
-    type: load-balance
-    # 策略组类型，load-balance 表示将请求在组内多个节点间分配，实现负载均衡。
-    
-    include-all: true
-    # 自动包含所有来自 proxy-providers 的代理节点（满足 filter 条件者）
-    
-    filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
-    # 使用正则表达式过滤符合“香港”相关关键词的节点，(?i) 表示不区分大小写。
-    
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
-    # Clash UI 中显示的图标 URL，可自定义
-    
-    strategy: consistent-hashing
-    # 负载均衡策略：
-    # - consistent-hashing（推荐）：对相同的域名请求始终使用同一个节点，提升缓存命中率、连接稳定性。
-    # - round-robin：平均分配请求到每个可用节点。
-    # - sticky-sessions：粘性会话，保持用户会话一致性（多数情况不推荐）。
-    
-    health-check:
-      enable: true
-      # 开启健康检查，确保不可用节点不参与负载均衡分配。
-      
-      interval: 300
-      # 健康检查的时间间隔（秒），此处为每 5 分钟检测一次。
-      
-      lazy: true
-      # 懒加载检查，只有在节点被选中时才执行健康检查，减少不必要的网络开销。
-      # 若希望启动时就检测所有节点，请改为 false。
-      
-      url: http://cp.cloudflare.com/generate_204
-      # 用于健康检查的测试地址，该地址返回 204 空响应，适合快速判断节点连通性。
-
-  - name: 台湾负载均衡
-    type: load-balance
-    include-all: true
-    filter: "(?i)台|新北|彰化|TW|Taiwan"
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
-    strategy: consistent-hashing
-    health-check:
-      enable: true
-      interval: 300
-      lazy: true
-      url: http://cp.cloudflare.com/generate_204
-
-  - name: 日本负载均衡
-    type: load-balance
-    include-all: true
-    filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
-    strategy: consistent-hashing
-    health-check:
-      enable: true
-      interval: 300
-      lazy: true
-      url: http://cp.cloudflare.com/generate_204
-
-  - name: 美国负载均衡
-    type: load-balance
-    include-all: true
-    filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
-    strategy: consistent-hashing
-    health-check:
-      enable: true
-      interval: 300
-      lazy: true
-      url: http://cp.cloudflare.com/generate_204
-
-  - name: 新加坡负载均衡
-    type: load-balance
-    include-all: true
-    filter: "(?i)新加坡|坡|狮城|SG|Singapore"
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
-    strategy: consistent-hashing
-    health-check:
-      enable: true
-      interval: 300
-      lazy: true
-      url: http://cp.cloudflare.com/generate_204
-
-  - name: 韩国负载均衡
-    type: load-balance
-    include-all: true
-    filter: "(?i)KR|Korea|KOR|首尔|韩|韓"
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png
-    strategy: consistent-hashing
-    health-check:
-      enable: true
-      interval: 300
-      lazy: true
-      url: http://cp.cloudflare.com/generate_204
-
 
   - name: GLOBAL
     include-all: true
