@@ -1,3 +1,40 @@
+# ======================= 节点提供器配置（proxy-providers） =======================
+# proxy-providers 是 Clash/Mihomo 的一项功能，用于从远程订阅源或本地 YAML 文件动态加载大量代理节点。
+# 与传统直接在配置文件写入所有节点相比，proxy-providers 更加灵活、易维护。
+
+proxy-providers:   #不使用订阅链接已被注释掉，需要使用直接删除开头的#即可
+  # 订阅1：可填写机场订阅链接（建议命名规范统一）
+  Subscription-1:         # 订阅名称，可自定义
+    type: http
+    url: "https://liangxin.xyz/api/v1/liangxin?OwO=23a2389cc87ca2e9b18c0efda13a51df"       #""中填写订阅机场链接
+    interval: 86400
+    path: ./providers/Subscription-1.yaml
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+
+  # 订阅2：可填写机场订阅链接
+  Subscription-2:         # 订阅名称，可自定义
+    type: http
+    url: "填写你的机场订阅链接"       #""中填写订阅机场链接
+    interval: 86400
+    path: ./providers/Subscription-2.yaml
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+
+  # 订阅3：可填写机场订阅链接
+  Subscription-3:         # 订阅名称，可自定义
+    type: http
+    url: "填写你的机场订阅链接"       #""中填写订阅机场链接
+    interval: 86400
+    path: ./providers/Subscription-3.yaml
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
 # ======================= 策略组配置（proxy-groups） =======================
 # 策略组定义了节点的选择方式，适用于自动选择、手动选择、地区分流、网站特定走向等。
 # 支持类型如下：
