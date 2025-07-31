@@ -17,8 +17,8 @@ proxy-providers:   #不使用订阅链接已被注释掉，需要使用直接删
   # 订阅2：可填写机场订阅链接
   Subscription-2:         # 订阅名称，可自定义
     type: http
-    url: "填写你的机场订阅"       #""中填写订阅机场链接
-    interval: 86400
+    url: "填写你的订阅链接"       #""中填写订阅机场链接
+    interval: 186400
     path: ./providers/Subscription-2.yaml
     health-check:
       enable: true
@@ -28,9 +28,19 @@ proxy-providers:   #不使用订阅链接已被注释掉，需要使用直接删
   # 订阅3：可填写机场订阅链接
   Subscription-3:         # 订阅名称，可自定义
     type: http
-    url: "填写你的机场订阅链接"       #""中填写订阅机场链接
+    url: "填写你的订阅链接"       #""中填写订阅机场链接
     interval: 86400
     path: ./providers/Subscription-3.yaml
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+  # 订阅4：可填写机场订阅链接
+  Subscription-4:         # 订阅名称，可自定义
+    type: http
+    url: "填写你的订阅链接"       #""中填写订阅机场链接
+    interval: 86400
+    path: ./providers/Subscription-4.yaml
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -50,35 +60,16 @@ proxy-providers:   #不使用订阅链接已被注释掉，需要使用直接删
 proxy-groups:
   - name: 首页入口
     type: select
-    # 总控制入口，用于所有流量的统一出站入口
     proxies:
-      - 自动选择
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - 备用节点
       - DIRECT
     icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
-
-  - name: 手动切换
-    type: select
-    include-all: true
-    filter: "(?i)^(?!.*(异常|剩余|流量|距离|官网|刷新|cn|com|套餐)).*$"
-    # 显示所有节点，供用户手动选择。适用于测试或指定某个节点。
-    icon: https://testingcf.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
-
-  - name: 自动选择
-    type: url-test
-    filter: "(?i)^(?!.*(异常|剩余|流量|距离|官网|刷新|cn|com|套餐)).*$"
-    include-all: true
-    interval: 86400  # 单位：秒，每10分钟重新测速一次
-    tolerance: 50  # 延迟容忍值，越低代表选择更“严格”
-    # 自动测试所有节点延迟，选择最快者使用
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
 
   - name: 特殊使用
     type: select
@@ -90,14 +81,12 @@ proxy-groups:
     type: select
     proxies:
       - 首页入口
-      - 自动选择
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
@@ -106,14 +95,12 @@ proxy-groups:
     type: select
     proxies:
       - 首页入口
-      - 自动选择
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/OpenAI.png
@@ -122,14 +109,12 @@ proxy-groups:
     type: select
     proxies:
       - 首页入口
-      - 自动选择
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
@@ -138,46 +123,26 @@ proxy-groups:
     type: select
     proxies:
       - 首页入口
-      - 自动选择
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - 备用节点
       - DIRECT
     icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
-
-  - name: Netflix
-    type: select
-    proxies:
-      - 首页入口
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-      - 新加坡节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - 备用节点
-      - DIRECT
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
 
   - name: Google
     type: select
     proxies:
       - 首页入口
-      - 自动选择
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
@@ -186,63 +151,26 @@ proxy-groups:
     type: select
     proxies:
       - 首页入口
-      - 自动选择
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - 备用节点
-
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub_Letter.png
-
-  - name: Disney
-    type: select
-    proxies:
-      - 首页入口
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-      - 新加坡节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - 备用节点
-      - DIRECT
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Disney.png
-
-  - name: Twitter
-    type: select
-    proxies:
-      - 首页入口
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-      - 新加坡节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - 备用节点
-      - DIRECT
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
 
   - name: Facebook
     type: select
     proxies:
       - 首页入口
-      - 自动选择
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png
@@ -251,65 +179,29 @@ proxy-groups:
     type: select
     proxies:
       - 首页入口
-      - 自动选择
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - 备用节点
       - DIRECT
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Instagram.png
 
-  - name: Spotify
+  - name: AppStore
     type: select
     proxies:
+      - DIRECT
       - 首页入口
-      - 自动选择
+      - 美国节点
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
-      - 美国节点
       - 韩国节点
-      - 手动切换
       - 备用节点
-      - DIRECT
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
-
-  - name: OneDrive
-    type: select
-    proxies:
-      - 首页入口
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-      - 新加坡节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - 备用节点
-      - DIRECT
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/OneDrive.png
-
-  - name: 国外媒体
-    type: select
-    proxies:
-      - 首页入口
-      - 自动选择
-      - 香港节点
-      - 台湾节点
-      - 新加坡节点
-      - 日本节点
-      - 美国节点
-      - 韩国节点
-      - 手动切换
-      - 备用节点
-      - DIRECT
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ForeignMedia.png
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png  
 
   - name: 国内媒体
     type: select
@@ -322,7 +214,6 @@ proxy-groups:
       - 新加坡节点
       - 韩国节点
       - 日本节点
-      - 手动切换
       - 备用节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
 
@@ -330,61 +221,29 @@ proxy-groups:
     type: select
     proxies:
       - 首页入口
-      - 自动选择
       - 香港节点
       - 台湾节点
       - 新加坡节点
       - 日本节点
       - 美国节点
       - 韩国节点
-      - 手动切换
       - 备用节点
       - DIRECT
     icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
     
-  - name: AppStore
-    type: select
-    proxies:
-      - DIRECT
-      - 首页入口
-      - 美国节点
-      - 香港节点
-      - 台湾节点
-      - 新加坡节点
-      - 日本节点
-      - 韩国节点
-      - 手动切换
-      - 备用节点
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
-
-  - name: 广告拦截
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
-
-  - name: 应用净化
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hijacking.png
-
   - name: 全球直连
     type: select
     proxies:
       - DIRECT
-      - 手动切换
       - 首页入口
-      - 自动选择
+
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
 
 
   # 以下为按节点名称自动分类的节点组，方便管理大量节点。
 
   - name: 香港节点
-    type: fallback
+    type: select
     include-all: true
     filter: "(?i)港|HK|hk|Hong Kong|HongKong|hongkong"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
@@ -396,7 +255,7 @@ proxy-groups:
     retries: 3
 
   - name: 台湾节点
-    type: fallback
+    type: select
     include-all: true
     filter: "(?i)台|新北|彰化|TW|Taiwan"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
@@ -408,7 +267,7 @@ proxy-groups:
     retries: 3
 
   - name: 日本节点
-    type: fallback
+    type: select
     include-all: true
     filter: "(?i)日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
@@ -420,7 +279,7 @@ proxy-groups:
     retries: 3
 
   - name: 美国节点
-    type: fallback
+    type: select
     include-all: true
     filter: "(?i)美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
@@ -432,7 +291,7 @@ proxy-groups:
     retries: 3
 
   - name: 新加坡节点
-    type: fallback
+    type: select
     include-all: true
     filter: "(?i)新加坡|坡|狮城|SG|Singapore"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
@@ -444,7 +303,7 @@ proxy-groups:
     retries: 3
 
   - name: 韩国节点
-    type: fallback
+    type: select
     include-all: true
     filter: "(?i)KR|Korea|KOR|首尔|韩|韓"
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/KR.png
@@ -455,20 +314,8 @@ proxy-groups:
     interval: 300
     retries: 3
 
-  - name: 奈飞节点
-    type: fallback
-    include-all: true
-    filter: "(?i)NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体"
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Netflix.png
-    strategy: latency
-    health-check:
-    enable: true
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    retries: 3
-
   - name: 备用节点
-    type: fallback
+    type: select
     include-all: true
     filter: "(?i)^(?!.*(港|HK|Hong Kong|HongKong|hongkong|台|新北|彰化|TW|Taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|新加坡|坡|狮城|SG|Singapore|KR|Korea|KOR|首尔|韩|韓|NF|奈飞|解锁|Netflix|NETFLIX|Media|流媒体|异常|剩余|流量|距离|官网|刷新|cn|com|套餐)).*$"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Server.png
@@ -714,23 +561,14 @@ rules:
   - "RULE-SET,SteamCN, 全球直连"
   - "RULE-SET,OpenAi, OpenAi"
   - "RULE-SET,YouTube, YouTube"
-  - "RULE-SET,Netflix, Netflix"
   - "RULE-SET,TikTok, TikTok"
   - "RULE-SET,Apple, AppStore"
   - "RULE-SET,GitHub, GitHub"
-  - "RULE-SET,Disney, Disney"
-  - "RULE-SET,Twitter, Twitter"
   - "RULE-SET,Facebook, Facebook"
   - "RULE-SET,Instagram, Instagram"
-  - "RULE-SET,Spotify, Spotify"
-  - "RULE-SET,OneDrive, OneDrive"
   - "RULE-SET,Google, Google"
   - "RULE-SET,Telegram, Telegram"
-  - "RULE-SET,UnBan,全球直连"
-  - "RULE-SET,BanAD,广告拦截"
-  - "RULE-SET,BanProgramAD,应用净化"
   - "RULE-SET,ChinaMedia,国内媒体"
-  - "RULE-SET,ProxyMedia,国外媒体"
   - "RULE-SET,ChinaDomain,全球直连"
   - "RULE-SET,ChinaCompanyIp,全球直连"
   - "RULE-SET,Download,全球直连"
@@ -788,12 +626,8 @@ rules:
 # - RULE-SET 可以引用远程规则文件，实现规则集中管理。
 # - 书写规则时请确保格式和缩进正确，符合 YAML 规范。
 
-
 # 规则添加示例：
 # - DOMAIN-SUFFIX,example.com, 自动选择
 # - DOMAIN-KEYWORD,facebook, 首页入口
 # - IP-CIDR,8.8.8.8/32, DIRECT
 # 规则顺序重要，越靠前优先级越高。
-
-
-
