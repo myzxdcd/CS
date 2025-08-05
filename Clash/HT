@@ -1,7 +1,9 @@
 # 内容：后台使用
-# 数量：5条
-IP-CIDR,154.93.61.64/25
+# 数量：7条
+IP-CIDR,150.230.217.0/16
+IP-CIDR,161.33.135.0/16
 IP-CIDR,132.145.83.0/16
+IP-CIDR,154.93.61.64/25
 DOMAIN-SUFFIX,sso.op.sdo.com
 DOMAIN-SUFFIX,app.op.sdo.com
 DOMAIN-SUFFIX,opendata.dw.sdo.com
