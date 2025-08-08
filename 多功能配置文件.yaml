@@ -4,9 +4,9 @@
 
 proxy-providers:   #不使用订阅链接已被注释掉，需要使用直接删除开头的#即可
   # 订阅1：可填写机场订阅链接（建议命名规范统一）
-  Subscription-1:         # 订阅名称，可自定义
+  Subscription-1(良心云):         # 订阅名称，可自定义
     type: http
-    url: "https://liangxin.xyz/api/v1/liangxin?OwO=23a2389cc87ca2e9b18c0efda13a51df"       #""中填写订阅机场链接
+    url: https://liangxin.xyz/api/v1/liangxin?OwO=80ce2af6ad81c66635392b4eda520abb       #""中填写订阅机场链接
     interval: 86400
     path: ./providers/Subscription-1.yaml
     health-check:
@@ -15,9 +15,9 @@ proxy-providers:   #不使用订阅链接已被注释掉，需要使用直接删
       interval: 300
 
   # 订阅2：可填写机场订阅链接
-  Subscription-2:         # 订阅名称，可自定义
+  Subscription-2():         # 订阅名称，可自定义
     type: http
-    url: "填写你的订阅链接"       #""中填写订阅机场链接
+    url: https://9dbfe52be0b2592200e90fd3b92c8607       #""中填写订阅机场链接
     interval: 186400
     path: ./providers/Subscription-2.yaml
     health-check:
@@ -26,25 +26,26 @@ proxy-providers:   #不使用订阅链接已被注释掉，需要使用直接删
       interval: 300
 
   # 订阅3：可填写机场订阅链接
-  Subscription-3:         # 订阅名称，可自定义
+  Subscription-3():         # 订阅名称，可自定义
     type: http
-    url: "填写你的订阅链接"       #""中填写订阅机场链接
-    interval: 86400
+    url: https:       #""中填写订阅机场链接
+    interval: 186400
     path: ./providers/Subscription-3.yaml
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
-      interval: 300
-  # 订阅4：可填写机场订阅链接
-  Subscription-4:         # 订阅名称，可自定义
-    type: http
-    url: "填写你的订阅链接"       #""中填写订阅机场链接
-    interval: 86400
-    path: ./providers/Subscription-4.yaml
+
+  # 自建节点 provider：从本地 YAML 加载
+  自建节点:
+    type: file
+    path: ./providers/self-hosted.yaml
+    interval: 3600
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
+
+
 # ======================= 策略组配置（proxy-groups） =======================
 # 策略组定义了节点的选择方式，适用于自动选择、手动选择、地区分流、网站特定走向等。
 # 支持类型如下：
@@ -60,6 +61,7 @@ proxy-providers:   #不使用订阅链接已被注释掉，需要使用直接删
 proxy-groups:
   - name: 首页入口
     type: select
+    # 总控制入口，用于所有流量的统一出站入口
     proxies:
       - 香港节点
       - 台湾节点
@@ -74,7 +76,7 @@ proxy-groups:
   - name: 特殊使用
     type: select
     include-all: true
-    filter: "(?i)^(?!.*(异常|剩余|流量|距离|官网|刷新|cn|com|套餐)).*$"
+    filter: "(?i)台湾|TW|港|HK|hk|Hong Kong|HongKong|hongkong|taiwan|台"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
   
   - name: Telegram
@@ -216,6 +218,21 @@ proxy-groups:
       - 日本节点
       - 备用节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
+    
+  - name: 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 首页入口
+      - 香港节点
+      - 台湾节点
+      - 日本节点
+      - 美国节点
+      - 新加坡节点
+      - 韩国节点
+      - 日本节点
+      - 备用节点
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
 
   - name: 漏网之鱼
     type: select
@@ -230,15 +247,6 @@ proxy-groups:
       - 备用节点
       - DIRECT
     icon: https://img.icons8.com/?size=144&id=9Mz1BhM4ui54&format=png&color=000000
-    
-  - name: 全球直连
-    type: select
-    proxies:
-      - DIRECT
-      - 首页入口
-
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
-
 
   # 以下为按节点名称自动分类的节点组，方便管理大量节点。
 
@@ -556,7 +564,7 @@ rule-providers:
 # - RULE-SET,Google, Google
 # 表示请求匹配 Google 规则集的流量走 Google 策略组
 rules:  
-  - DOMAIN-SUFFIX,vilink.cc,香港节点
+  - DOMAIN-SUFFIX,vilink.cc,漏网之鱼
   - "RULE-SET,HT,特殊使用"
   - "RULE-SET,SteamCN, 全球直连"
   - "RULE-SET,OpenAi, OpenAi"
@@ -626,8 +634,12 @@ rules:
 # - RULE-SET 可以引用远程规则文件，实现规则集中管理。
 # - 书写规则时请确保格式和缩进正确，符合 YAML 规范。
 
+
 # 规则添加示例：
 # - DOMAIN-SUFFIX,example.com, 自动选择
 # - DOMAIN-KEYWORD,facebook, 首页入口
 # - IP-CIDR,8.8.8.8/32, DIRECT
 # 规则顺序重要，越靠前优先级越高。
+
+
+
