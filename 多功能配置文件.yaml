@@ -2,38 +2,17 @@
 # proxy-providers 是 Clash/Mihomo 的一项功能，用于从远程订阅源或本地 YAML 文件动态加载大量代理节点。
 # 与传统直接在配置文件写入所有节点相比，proxy-providers 更加灵活、易维护。
 
-proxy-providers:   #不使用订阅链接已被注释掉，需要使用直接删除开头的#即可
-  # 订阅1：可填写机场订阅链接（建议命名规范统一）
-  Subscription-1(良心云):         # 订阅名称，可自定义
-    type: http
-    url: https://liangxin.xyz/api/v1/liangxin?OwO=80ce2af6ad81c66635392b4eda520abb       #""中填写订阅机场链接
-    interval: 86400
-    path: ./providers/Subscription-1.yaml
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
+proxy-providers: 
 
-  # 订阅2：可填写机场订阅链接
-  Subscription-2():         # 订阅名称，可自定义
+  Subscription-2(红杏):         # 订阅名称，可自定义
     type: http
-    url: https://9dbfe52be0b2592200e90fd3b92c8607       #""中填写订阅机场链接
+    url:       #填写订阅机场链接
     interval: 186400
     path: ./providers/Subscription-2.yaml
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-
-  # 订阅3：可填写机场订阅链接
-  Subscription-3():         # 订阅名称，可自定义
-    type: http
-    url: https:       #""中填写订阅机场链接
-    interval: 186400
-    path: ./providers/Subscription-3.yaml
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
 
   # 自建节点 provider：从本地 YAML 加载
   自建节点:
@@ -564,7 +543,12 @@ rule-providers:
 # - RULE-SET,Google, Google
 # 表示请求匹配 Google 规则集的流量走 Google 策略组
 rules:  
-  - DOMAIN-SUFFIX,vilink.cc,漏网之鱼
+  - IP-CIDR,140.245.92.253/32,首页入口
+  - IP-CIDR,150.230.104.61/32,首页入口
+  - IP-CIDR,161.33.150.173/32,首页入口
+  - IP-CIDR,161.33.145.80/32,首页入口
+  - DOMAIN-SUFFIX,gmpub.vilink.cc,首页入口
+  - DOMAIN-SUFFIX,gmres.vilink.cc,首页入口
   - "RULE-SET,HT,特殊使用"
   - "RULE-SET,SteamCN, 全球直连"
   - "RULE-SET,OpenAi, OpenAi"
