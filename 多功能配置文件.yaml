@@ -547,7 +547,6 @@ rules:
   - IP-CIDR,150.230.104.61/32,首页入口
   - IP-CIDR,161.33.150.173/32,首页入口
   - IP-CIDR,161.33.145.80/32,首页入口
-  - DOMAIN-SUFFIX,data.quicksdk.net,首页入口
   - DOMAIN-SUFFIX,gmpub.vilink.cc,首页入口
   - DOMAIN-SUFFIX,gmres.vilink.cc,首页入口
   - "RULE-SET,HT,特殊使用"
@@ -625,6 +624,7 @@ rules:
 # - DOMAIN-KEYWORD,facebook, 首页入口
 # - IP-CIDR,8.8.8.8/32, DIRECT
 # 规则顺序重要，越靠前优先级越高。
+
 
 
 
