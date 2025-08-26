@@ -4,11 +4,11 @@
 
 proxy-providers: 
 
-  Subscription-2(红杏):         # 订阅名称，可自定义
+  Subscription-1:         # 订阅名称，可自定义
     type: http
     url:       #填写订阅机场链接
     interval: 186400
-    path: ./providers/Subscription-2.yaml
+    path: ./providers/Subscription-1.yaml
     health-check:
       enable: true
       url: https://www.gstatic.com/generate_204
@@ -549,23 +549,23 @@ rules:
   - IP-CIDR,161.33.145.80/32,首页入口
   - DOMAIN-SUFFIX,gmpub.vilink.cc,首页入口
   - DOMAIN-SUFFIX,gmres.vilink.cc,首页入口
-  - "RULE-SET,HT,特殊使用"
-  - "RULE-SET,SteamCN, 全球直连"
-  - "RULE-SET,OpenAi, OpenAi"
-  - "RULE-SET,YouTube, YouTube"
-  - "RULE-SET,TikTok, TikTok"
-  - "RULE-SET,Apple, AppStore"
-  - "RULE-SET,GitHub, GitHub"
-  - "RULE-SET,Facebook, Facebook"
-  - "RULE-SET,Instagram, Instagram"
-  - "RULE-SET,Google, Google"
-  - "RULE-SET,Telegram, Telegram"
-  - "RULE-SET,ChinaMedia,国内媒体"
-  - "RULE-SET,ChinaDomain,全球直连"
-  - "RULE-SET,ChinaCompanyIp,全球直连"
-  - "RULE-SET,Download,全球直连"
-  - "GEOIP,CN, 全球直连,no-resolve"  # 中国大陆IP直连
-  - "MATCH, 漏网之鱼"        # 兜底规则，未匹配流量走“漏网之鱼”组
+  - RULE-SET,HT,特殊使用
+  - RULE-SET,SteamCN, 全球直连
+  - RULE-SET,OpenAi, OpenAi
+  - RULE-SET,YouTube, YouTube
+  - RULE-SET,TikTok, TikTok
+  - RULE-SET,Apple, AppStore
+  - RULE-SET,GitHub, GitHub
+  - RULE-SET,Facebook, Facebook
+  - RULE-SET,Instagram, Instagram
+  - RULE-SET,Google, Google
+  - RULE-SET,Telegram, Telegram
+  - RULE-SET,ChinaMedia,国内媒体
+  - RULE-SET,ChinaDomain,全球直连
+  - RULE-SET,ChinaCompanyIp,全球直连
+  - RULE-SET,Download,全球直连
+  - GEOIP,CN, 全球直连,no-resolve  # 中国大陆IP直连
+  - MATCH, 漏网之鱼        # 兜底规则，未匹配流量走“漏网之鱼”组
   
 #------------------- 规则说明 -------------------
 # 1. DOMAIN-KEYWORD
@@ -624,6 +624,7 @@ rules:
 # - DOMAIN-KEYWORD,facebook, 首页入口
 # - IP-CIDR,8.8.8.8/32, DIRECT
 # 规则顺序重要，越靠前优先级越高。
+
 
 
 
