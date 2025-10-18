@@ -3,10 +3,9 @@
 # 与传统直接在配置文件写入所有节点相比，proxy-providers 更加灵活、易维护。
 
 proxy-providers: 
-
-  Subscription-1:         # 订阅名称，可自定义
+  红杏云:         
     type: http
-    url:       #填写订阅机场链接
+    url: https://43.139.213.75:9000/hxyunvip?token=ddab48ca1fbd7820fb9ce50affc891fe      #填写订阅机场链接
     interval: 186400
     path: ./providers/Subscription-1.yaml
     health-check:
@@ -55,7 +54,7 @@ proxy-groups:
   - name: 特殊使用
     type: select
     include-all: true
-    filter: "(?i)台湾|TW|港|HK|hk|Hong Kong|HongKong|hongkong|taiwan|台"
+    filter: "(?i)台北|云悠|非凡|AP-JP|ACC"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
   
   - name: Telegram
@@ -549,6 +548,7 @@ rules:
   - IP-CIDR,161.33.145.80/32,首页入口
   - DOMAIN-SUFFIX,gmpub.vilink.cc,首页入口
   - DOMAIN-SUFFIX,gmres.vilink.cc,首页入口
+  - RULE-SET,SteamCN,全球直连
   - RULE-SET,HT,特殊使用
   - RULE-SET,SteamCN, 全球直连
   - RULE-SET,OpenAi, OpenAi
@@ -571,45 +571,45 @@ rules:
 # 1. DOMAIN-KEYWORD
 #    - 匹配包含指定关键字的域名请求。
 #    - 例：DOMAIN-KEYWORD,google 会匹配所有域名中包含 "google" 的请求，如 www.google.com、notgoogle.com。
-#
+
 # 2. DOMAIN-SUFFIX
 #    - 匹配以指定后缀结尾的域名请求。
 #    - 例：DOMAIN-SUFFIX,google.com 匹配 www.google.com 和 mail.google.com，但不匹配 mygoogle.com。
-#
+
 # 3. DOMAIN
 #    - 完全匹配指定的完整域名。
 #    - 例：DOMAIN,www.google.com 只匹配 www.google.com，不匹配 mail.google.com。
-#
+
 # 4. IP-CIDR
 #    - 匹配指定的 IP 地址段流量。
 #    - 例：IP-CIDR,192.168.0.0/16 匹配所有 192.168.x.x 的请求。
-#
+
 # 5. GEOIP
 #    - 根据目标 IP 的归属国家/地区进行匹配。
 #    - 例：GEOIP,CN 匹配所有归属于中国的 IP 地址。
 #    - 需确保已加载 GEOIP 数据库。
-#
+
 # 6. GEOSITE
 #    - 根据目标域名所属地理区域匹配。
 #    - 例：GEOSITE,cn 匹配中国大陆相关域名。
 #    - 依赖 GEOSITE 规则库文件。
-#
+
 # 7. MATCH
 #    - 匹配所有未被之前规则匹配的剩余流量。
 #    - 例：MATCH 通常作为兜底规则，放在规则列表最后。
-#
+
 # 8. PROCESS-NAME
 #    - 根据发起请求的进程名匹配（部分客户端支持）。
 #    - 例：PROCESS-NAME,chrome.exe 匹配 Chrome 浏览器的请求。
-#
+
 # 9. SRC-IP-CIDR
 #    - 根据请求来源的 IP 地址段匹配（部分客户端支持）。
 #    - 例：SRC-IP-CIDR,192.168.1.0/24 匹配局域网指定网段来源的请求。
-#
+
 # 10. USER-AGENT
 #     - 根据 HTTP 请求的 User-Agent 字段匹配（部分客户端支持）。
 #     - 例：USER-AGENT,Firefox 匹配 Firefox 浏览器请求。
-#
+
 # 注意事项：
 # - 规则顺序重要，匹配到规则即生效，后续规则忽略。
 # - 精准和访问频率高的规则放前面，提升匹配效率。
