@@ -177,6 +177,14 @@ function main(config) {
       url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/OpenAI.list",
       path: "./ruleset/OpenAI.list",
     },
+    HT: {
+      type: "http",
+      behavior: "classical",
+      format: "text",
+      interval: 86400,
+      url: "https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/HT",
+      path: "./ruleset/HT.list",
+    },
   };
 
   // === 3. 定义规则顺序 ===
@@ -187,6 +195,7 @@ function main(config) {
     "RULE-SET,SteamCN,DIRECT",
     "RULE-SET,ChinaDomain,DIRECT",
     "RULE-SET,ChinaCompanyIp,DIRECT",
+    "RULE-SET,HT,节点选择",
     "RULE-SET,Telegram,节点选择",
     "RULE-SET,ProxyMedia,节点选择",
     "RULE-SET,ProxyLite,节点选择",
@@ -211,5 +220,6 @@ function main(config) {
 
   return config;
 }
+
 
 
