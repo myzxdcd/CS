@@ -22,8 +22,8 @@ function main(config) {
       tolerance: 50,
     },
     {
-      name: "负载均衡",
-      type: "load-balance",
+      name: "故障转移",
+      type: "fallback",
       "include-all": true,
       url: "http://www.gstatic.com/generate_204",
       interval: 300,
@@ -211,3 +211,4 @@ function main(config) {
 
   return config;
 }
+
