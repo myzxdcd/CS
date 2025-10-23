@@ -8,7 +8,7 @@ function main(config) {
       type: "select",
       proxies: [
         "自动选择",
-        "负载均衡",
+        "故障转移",
         "DIRECT",
         ...proxies.map(p => p.name), // 添加所有节点
       ],
@@ -211,4 +211,5 @@ function main(config) {
 
   return config;
 }
+
 
