@@ -6,7 +6,12 @@ function main(config) {
     {
       name: "节点选择",
       type: "select",
-      proxies: ["自动选择", "负载均衡", "DIRECT"],
+      proxies: [
+        "自动选择",
+        "负载均衡",
+        "DIRECT",
+        ...proxies.map(p => p.name), // 添加所有节点
+      ],
     },
     {
       name: "自动选择",
@@ -195,7 +200,7 @@ function main(config) {
     "RULE-SET,Twitter,节点选择",
     "RULE-SET,OpenAI,节点选择",
     "GEOIP,CN,DIRECT",
-    "MATCH,节点选择"
+    "MATCH,节点选择",
   ];
 
   // === 4. 应用修改 ===
