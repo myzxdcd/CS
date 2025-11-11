@@ -54,7 +54,7 @@ proxy-groups:
   - name: 特殊使用
     type: select
     include-all: true
-    filter: "(?i)台北|云悠|非凡|AP-JP|ACC"
+    filter: "(?i)台北|云悠|非凡|AP-JP|Av"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
   
   - name: Telegram
@@ -558,6 +558,8 @@ rules:
   - IP-CIDR,161.33.146.51/32,首页入口
   - DOMAIN-SUFFIX,gmpub.vilink.cc,首页入口
   - DOMAIN-SUFFIX,gmres.vilink.cc,首页入口
+  - DOMAIN-SUFFIX,xuezhangvps.shop,首页入口
+  - DOMAIN-SUFFIX,e.beupisp.com, YouTube
   - RULE-SET,SteamCN, 全球直连
   - RULE-SET,HT,特殊使用
   - RULE-SET,Steam, 全球直连
@@ -634,9 +636,3 @@ rules:
 # - DOMAIN-KEYWORD,facebook, 首页入口
 # - IP-CIDR,8.8.8.8/32, DIRECT
 # 规则顺序重要，越靠前优先级越高。
-
-
-
-
-
-
