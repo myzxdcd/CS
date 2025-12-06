@@ -2,7 +2,7 @@
 # proxy-providers 是 Clash/Mihomo 的一项功能，用于从远程订阅源或本地 YAML 文件动态加载大量代理节点。
 # 与传统直接在配置文件写入所有节点相比，proxy-providers 更加灵活、易维护。
 
-proxy-providers: 
+#proxy-providers: 
   红杏云:         
     type: http
     url:      #填写订阅机场链接
@@ -14,7 +14,7 @@ proxy-providers:
       interval: 300
 
   # 自建节点 provider：从本地 YAML 加载
-  自建节点:
+ # 自建节点:
     type: file
     path: ./providers/self-hosted.yaml
     interval: 3600
@@ -636,4 +636,5 @@ rules:
 # - DOMAIN-KEYWORD,facebook, 首页入口
 # - IP-CIDR,8.8.8.8/32, DIRECT
 # 规则顺序重要，越靠前优先级越高。
+
 
