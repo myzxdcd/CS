@@ -518,7 +518,7 @@ rule-providers:
     type: http
 
   HT:
-    url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/HT.yaml
+    url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/HT.list
     path: ./ruleset/HT.list
     behavior: classical
     interval: 86400
@@ -623,6 +623,7 @@ rules:
 # - DOMAIN-KEYWORD,facebook, 首页入口
 # - IP-CIDR,8.8.8.8/32, DIRECT
 # 规则顺序重要，越靠前优先级越高。
+
 
 
 
