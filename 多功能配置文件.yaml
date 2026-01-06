@@ -340,6 +340,13 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  Gemini:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list
+    path: ./ruleset/Gemini.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http    
     
   Google:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Google/Google.list
@@ -348,7 +355,15 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-
+    
+  OpenAi:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/OpenAI/OpenAI.list
+    path: ./ruleset/OpenAi.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+    
   SteamCN:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/SteamCN/SteamCN.list
     path: ./ruleset/SteamCN.list
@@ -376,22 +391,6 @@ rule-providers:
   Telegram:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Telegram/Telegram.list
     path: ./ruleset/Telegram.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
-
-  OpenAi:
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/OpenAI/OpenAI.list
-    path: ./ruleset/OpenAi.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
-    
-  Gemini:
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list
-    path: ./ruleset/Gemini.list
     behavior: classical
     interval: 86400
     format: text
@@ -547,17 +546,17 @@ rules:
   - DOMAIN-SUFFIX,xuezhangvps.shop,首页入口
   - DOMAIN-SUFFIX,e.beupisp.com,YouTube
   - RULE-SET,Gemini,OpenAi
-  - RULE-SET,SteamCN, 全球直连
+  - RULE-SET,OpenAi,OpenAi
+  - RULE-SET,Google,Google
   - RULE-SET,HT,特殊使用
   - RULE-SET,Steam,全球直连
-  - RULE-SET,OpenAi,OpenAi
   - RULE-SET,YouTube,YouTube
   - RULE-SET,TikTok,TikTok
   - RULE-SET,Apple,AppStore
   - RULE-SET,GitHub,GitHub
   - RULE-SET,Facebook,Facebook
   - RULE-SET,Instagram,Instagram
-  - RULE-SET,Google,Google
+  - RULE-SET,SteamCN, 全球直连
   - RULE-SET,Telegram,Telegram
   - RULE-SET,ChinaMedia,国内媒体
   - RULE-SET,ChinaDomain,全球直连
@@ -623,6 +622,7 @@ rules:
 # - DOMAIN-KEYWORD,facebook, 首页入口
 # - IP-CIDR,8.8.8.8/32, DIRECT
 # 规则顺序重要，越靠前优先级越高。
+
 
 
 
