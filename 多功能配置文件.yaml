@@ -119,14 +119,6 @@ proxy-groups:
       - 备用节点
       - DIRECT
     icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
-
-  - name: 特殊使用
-    type: select
-    proxies:
-      - 首页入口
-    include-all: true
-    filter: "(?i)台北|云悠|QKJ|AP-JP|Yoo|vmrack"
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
   
   - name: Telegram
     type: select
@@ -635,13 +627,6 @@ rule-providers:
     format: text
     type: http
 
-  HT:
-    url: https://raw.githubusercontent.com/myzxdcd/CS/refs/heads/main/Clash/HT.list
-    path: ./ruleset/HT.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
 
 # ======================= 规则集配置（rules） =======================
 # 规则用于匹配特定流量，结合上方 rule-providers 里的规则文件，实现自动分流。
@@ -655,6 +640,7 @@ rule-providers:
 # - RULE-SET,Google, Google
 # 表示请求匹配 Google 规则集的流量走 Google 策略组
 rules: 
+  - DOMAIN-SUFFIX,crm.oncego.com,DIRECT
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
   - RULE-SET,BanAD,广告拦截
