@@ -16,6 +16,7 @@ tun:
   device: Mihomo
   auto-route: true
   auto-detect-interface: true
+  strict-route: true
   dns-hijack:
     - any:53
 
@@ -30,6 +31,9 @@ dns:
     - '*.lan'
     - '+.local'
     - 'localhost.ptlogin2.qq.com'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - 'time.windows.com'
     - 'www.cm.zxdyng.top'
   default-nameserver:
     - 223.5.5.5
@@ -46,6 +50,7 @@ dns:
   fallback-filter:
     geoip: true
     geoip-code: CN
+  respect-rules: true
 
 # 提高 TUN 场景下 TLS、HTTP 与 QUIC 流量的域名分流命中率。
 sniffer:
@@ -119,7 +124,7 @@ proxy-groups:
       - 备用节点
       - DIRECT
     icon: https://github.com/clash-verge-rev/clash-verge-rev/raw/main/src-tauri/icons/icon.png
-  
+
   - name: Telegram
     type: select
     proxies:
@@ -581,7 +586,7 @@ rule-providers:
 
   TikTok:
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/TikTok/TikTok.list
-    path: ./Ruleset/TikTok.list
+    path: ./ruleset/TikTok.list
     behavior: classical
     interval: 86400
     format: text
@@ -627,7 +632,6 @@ rule-providers:
     format: text
     type: http
 
-
 # ======================= 规则集配置（rules） =======================
 # 规则用于匹配特定流量，结合上方 rule-providers 里的规则文件，实现自动分流。
 # 规则格式：
@@ -640,15 +644,13 @@ rule-providers:
 # - RULE-SET,Google, Google
 # 表示请求匹配 Google 规则集的流量走 Google 策略组
 rules: 
-  - DOMAIN-SUFFIX,crm.oncego.com,DIRECT
   - RULE-SET,LocalAreaNetwork,DIRECT
   - RULE-SET,UnBan,DIRECT
   - RULE-SET,BanAD,广告拦截
   - RULE-SET,BanProgramAD,广告拦截
-  - DOMAIN-SUFFIX,shiyuegame.com,全球直连
+  - DOMAIN-SUFFIX,crm.oncego.com,全球直连
   - DOMAIN-SUFFIX,aliyuncs.com,全球直连
   - DOMAIN-SUFFIX,rainymoe.net,首页入口
-  - DOMAIN-SUFFIX,rambler.ru,特殊使用
   - DOMAIN-SUFFIX,gtarcade.com,全球直连
   - DOMAIN-SUFFIX,gmpub.vilink.cc,首页入口
   - DOMAIN-SUFFIX,gmres.vilink.cc,首页入口
@@ -656,7 +658,6 @@ rules:
   - RULE-SET,Gemini,OpenAi
   - RULE-SET,OpenAi,OpenAi
   - RULE-SET,Google,Google
-  - RULE-SET,HT,特殊使用
   - RULE-SET,SteamCN,游戏平台
   - RULE-SET,Steam,游戏平台
   - RULE-SET,YouTube,YouTube
